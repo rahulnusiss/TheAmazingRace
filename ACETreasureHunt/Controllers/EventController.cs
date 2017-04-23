@@ -23,8 +23,7 @@ namespace ACETreasureHunt.Controllers
         // GET: Event/Details/5
         public ActionResult Details(Event aceEvent)
         {
-            ViewBag.MyList = unitOfWork.Teams.GetAll();
-            ViewBag.MyList2 = unitOfWork.Events.GetAll();
+            
             //IEnumerable<Event> GameEvents = unitOfWork.Events.GetAllEvents();
             IEnumerable<Team> Teams = unitOfWork.Teams.GetAll();
             List<Team> ThisEventTeams = new List<Team>();
@@ -35,8 +34,52 @@ namespace ACETreasureHunt.Controllers
                     ThisEventTeams.Add(item);
                 }
             }
-            //Event GameEvent = unitOfWork.Events.Get(id);
+
+            IEnumerable<Staff> Staffs = unitOfWork.Staffs.GetAll();
+            List<Staff> ThisEventStaffs = new List<Staff>();
+            foreach ( var item in Staffs)
+            {
+                if ( aceEvent.Id == item.EventID)
+                {
+                    ThisEventStaffs.Add(item);
+                }
+            }
+            
+            IEnumerable<PitStop> PitStops = unitOfWork.PitStops.GetAll();
+            List<PitStop> ThisEventPitStops = new List<PitStop>();
+            foreach (var item in PitStops)
+            {
+                if ( aceEvent.Id == item.EventID)
+                {
+                    ThisEventPitStops.Add(item);
+                }
+            }
+
+            ViewBag.MyList = ThisEventTeams;
+            ViewBag.MyList2 = ThisEventStaffs;
+            ViewBag.MyList3 = ThisEventPitStops;
+
             return View(ThisEventTeams);
+
+            /*
+            //Event GameEvent = unitOfWork.Events.Get(id);
+            if ( EventStatus == "Completed" )
+            {
+                //Return Completed Details view
+                return View(ThisEventTeams);
+            }
+            
+            else if (aceEvent.Id == 2)
+            {
+                //Return Current Details view
+            }
+            else if (aceEvent.Id == 3)
+            {
+                //Return Scheduled Details view
+            }
+
+            return View(); */
+          
         }
 
         // GET: Event/Create

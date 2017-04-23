@@ -17,6 +17,7 @@ namespace ACETreasureHunt.DAL
             Events = new EventRepository(_context);
             Teams = new TeamRepository(_context);
             Staffs = new StaffRepository(_context);
+            PitStops = new PitStopRepository(_context);
             //Authors = new PitStopRepository(_context);
         }
 
