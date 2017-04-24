@@ -8,6 +8,7 @@ namespace ACETreasureHunt.Models
 {
     public class PitStop
     {
+
         [Key]
         public int Id { get; set; }
 
@@ -15,6 +16,8 @@ namespace ACETreasureHunt.Models
         [StringLength(50, MinimumLength = 1)]
         [Display(Name = "Event Name")]
         public string PitStopName { get; set; }
+
+        public string Description { get; set; }
 
         [Required]
         public int PitStopNumber { get; set; }
@@ -26,5 +29,9 @@ namespace ACETreasureHunt.Models
         [Required]
         [Range(-180.000, 180.0000)]
         public int longitude { get; set; }
+
+        public int EventID { get; set; }
+
+        public virtual Event Event { get; set; }
     }
 }

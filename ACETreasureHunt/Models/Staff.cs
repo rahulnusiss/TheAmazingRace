@@ -17,12 +17,13 @@ namespace ACETreasureHunt.Models
 
         [Required]
         [Range(-90.000, 90.0000)]
-        public int latitude { get; set; }
-
+        public double Latitude { get; set; }
         [Required]
         [Range(-180.000, 180.0000)]
-        public int longitude { get; set; }
-        
+        public double Longitude { get; set; }
+
         public int EventID { get; set; }
+
+        public virtual Event Event { get; set; }
     }
 }

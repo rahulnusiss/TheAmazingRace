@@ -8,6 +8,13 @@ namespace ACETreasureHunt.Models
 {
     public class Event
     {
+        public Event()
+        {
+            this.Teams = new HashSet<Team>();
+            this.Staffs = new HashSet<Staff>();
+            this.PitStops = new HashSet<PitStop>();
+        }
+
         [Key]
         public int Id { get; set; }
 
@@ -23,7 +30,18 @@ namespace ACETreasureHunt.Models
         public string Address { get; set; }
 
         [Required]
+        [Range(-90.000, 90.0000)]
+        public double Latitude { get; set; }
+        [Required]
+        [Range(-180.000, 180.0000)]
+        public double Longitude { get; set; }
+
+        [Required]
         public string Status { get; set; }
-        
+
+        public virtual ICollection<Team> Teams { get; set; }
+        public virtual ICollection<Staff> Staffs { get; set; }
+        public virtual ICollection<PitStop> PitStops { get; set; }
+
     }
 }

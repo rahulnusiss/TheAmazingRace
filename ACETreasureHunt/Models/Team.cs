@@ -18,5 +18,7 @@ namespace ACETreasureHunt.Models
         public string Description { get; set; }
        
         public int EventID { get; set; }
+
+        public virtual Event Event { get; set; }
     }
 }
