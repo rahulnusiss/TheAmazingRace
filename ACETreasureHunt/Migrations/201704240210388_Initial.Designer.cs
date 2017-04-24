@@ -13,7 +13,7 @@ namespace ACETreasureHunt.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201704231500336_Initial"; }
+            get { return "201704240210388_Initial"; }
         }
         
         string IMigrationMetadata.Source
