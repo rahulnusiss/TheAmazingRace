@@ -193,6 +193,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\StaffController.cs" />
+    <Compile Include="Controllers\TeamsController.cs" />
     <Compile Include="DAL\ACEContext.cs" />
     <Compile Include="DAL\EventRepository.cs" />
     <Compile Include="DAL\IEventRepository.cs" />
@@ -291,11 +292,12 @@
     <Content Include="Views\Event\Index.cshtml" />
     <Content Include="Views\Staff\Create.cshtml" />
     <Content Include="Views\Staff\Index.cshtml" />
-    <Content Include="Views\Staff\Edit.cshtml" />
     <Content Include="Views\Event\Edit.cshtml" />
+    <Content Include="Views\Staff\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Teams\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
