@@ -19,11 +19,13 @@ namespace ACETreasureHunt.Controllers
             return View(GameStaffs);
         }
 
+        /*
         // GET: Staff/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
+        */
 
         // GET: Staff/Create
         public ActionResult Create()
@@ -62,19 +64,23 @@ namespace ACETreasureHunt.Controllers
         }
 
         // GET: Staff/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(Staff aceStaff)
         {
-            return View();
+            Staff EventStaff = unitOfWork.Staffs.Get(aceStaff.Id);
+            return View(EventStaff);
         }
 
         // POST: Staff/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        //public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id,Staff aceStaff)
         {
             try
             {
                 // TODO: Add update logic here
-
+                Staff staff = unitOfWork.Staffs.Get(aceStaff.Id);
+                UpdateModel(staff);
+                unitOfWork.Complete();
                 return RedirectToAction("Index");
             }
             catch
@@ -82,7 +88,7 @@ namespace ACETreasureHunt.Controllers
                 return View();
             }
         }
-
+        
         // GET: Staff/Delete/5
         public ActionResult Delete(int id)
         {
