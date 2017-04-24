@@ -210,9 +210,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201704230422385_Initial.cs" />
-    <Compile Include="Migrations\201704230422385_Initial.Designer.cs">
-      <DependentUpon>201704230422385_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201704240830126_Initial.cs" />
+    <Compile Include="Migrations\201704240830126_Initial.Designer.cs">
+      <DependentUpon>201704240830126_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -229,6 +229,8 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\eventdetails.css" />
+    <Content Include="Content\home.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -247,7 +249,9 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -307,8 +311,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201704230422385_Initial.resx">
-      <DependentUpon>201704230422385_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201704240830126_Initial.resx">
+      <DependentUpon>201704240830126_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -16,27 +16,70 @@ namespace ACETreasureHunt.Controllers
         // GET: Event
         public ActionResult Index()
         {
-            IEnumerable<Event> GameEvents = unitOfWork.Events.GetAllEvents();            
+            IEnumerable<Event> GameEvents = unitOfWork.Events.GetAllEvents();
             return View(GameEvents);
         }
 
         // GET: Event/Details/5
         public ActionResult Details(Event aceEvent)
         {
-            ViewBag.MyList = unitOfWork.Teams.GetAll();
-            ViewBag.MyList2 = unitOfWork.Events.GetAll();
+
             //IEnumerable<Event> GameEvents = unitOfWork.Events.GetAllEvents();
             IEnumerable<Team> Teams = unitOfWork.Teams.GetAll();
             List<Team> ThisEventTeams = new List<Team>();
-            foreach ( var item in Teams)
+            foreach (var item in Teams)
             {
-                if ( aceEvent.Id == item.EventID)
+                if (aceEvent.Id == item.EventID)
                 {
                     ThisEventTeams.Add(item);
                 }
             }
-            //Event GameEvent = unitOfWork.Events.Get(id);
+
+            IEnumerable<Staff> Staffs = unitOfWork.Staffs.GetAll();
+            List<Staff> ThisEventStaffs = new List<Staff>();
+            foreach (var item in Staffs)
+            {
+                if (aceEvent.Id == item.EventID)
+                {
+                    ThisEventStaffs.Add(item);
+                }
+            }
+
+            IEnumerable<PitStop> PitStops = unitOfWork.PitStops.GetAll();
+            List<PitStop> ThisEventPitStops = new List<PitStop>();
+            foreach (var item in PitStops)
+            {
+                if (aceEvent.Id == item.EventID)
+                {
+                    ThisEventPitStops.Add(item);
+                }
+            }
+
+            ViewBag.MyList = ThisEventTeams;
+            ViewBag.MyList2 = ThisEventStaffs;
+            ViewBag.MyList3 = ThisEventPitStops;
+
             return View(ThisEventTeams);
+
+            /*
+            //Event GameEvent = unitOfWork.Events.Get(id);
+            if ( EventStatus == "Completed" )
+            {
+                //Return Completed Details view
+                return View(ThisEventTeams);
+            }
+            
+            else if (aceEvent.Id == 2)
+            {
+                //Return Current Details view
+            }
+            else if (aceEvent.Id == 3)
+            {
+                //Return Scheduled Details view
+            }
+
+            return View(); */
+
         }
 
         // GET: Event/Create
@@ -56,9 +99,9 @@ namespace ACETreasureHunt.Controllers
                 unitOfWork.Events.Add(aceEvent);
                 unitOfWork.Complete();
                 return RedirectToAction("Index");
-                
+
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 if (e.GetType() != typeof(DbEntityValidationException))
                 {
@@ -78,14 +121,14 @@ namespace ACETreasureHunt.Controllers
         // GET: Event/Edit/5
         public ActionResult Edit(Event aceEvent)
         {
-            Team EventTeam = new Team();            
+            Team EventTeam = new Team();
             return View(EventTeam);
         }
 
         // POST: Event/Edit/5
         [HttpPost]
         //public ActionResult Edit(int id, FormCollection collection)
-        public ActionResult Edit(Event ACEEvent,Team ACETeam)
+        public ActionResult Edit(Event ACEEvent, Team ACETeam)
         {
             try
             {

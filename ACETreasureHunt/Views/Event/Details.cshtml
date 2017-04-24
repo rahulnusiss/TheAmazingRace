@@ -1,20 +1,25 @@
-﻿@model IEnumerable<ACETreasureHunt.Models.Team>
+﻿
+
+@model IEnumerable<ACETreasureHunt.Models.Team>
 
 @{
     ViewBag.Title = "Details";
 }
-
+<div class="container well">
 <h2>Details</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+
+    @if(Context.User.Identity.IsAuthenticated) {
+    <button type="button" class="btn btn-primary btn-lg btn3d">
+   @Html.ActionLink("Create New", "Create")
+    </button>
+    }
 <table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
-        <th></th>
+        
     </tr>
 
 @foreach (var item in Model)
@@ -23,10 +28,13 @@
         <td>
             @Html.DisplayFor(modelItem => item.Name)
         </td>
+        
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.EventID }) |
-            @Html.ActionLink("Details", "Details", new { id = item.EventID }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.EventID })
+            
+            @if(Context.User.Identity.IsAuthenticated) {<button type="button" class="btn btn-primary btn-xs btn3d" style="color:aliceblue">@Html.ActionLink("Edit", "Edit", new { id = item.EventID })</button>
+            <button type="button" class="btn btn-primary btn-xs btn3d" style="color:aliceblue">@Html.ActionLink("Details", "Details", new { id = item.EventID })</button>
+            <button type="button" class="btn btn-primary btn-xs btn3d" style="color:aliceblue">@Html.ActionLink("Delete", "Delete", new { id = item.EventID })</button>
+           }
         </td>
     </tr>
 }
@@ -44,3 +52,4 @@
 {
     <div>@event2.Name</div>
 }
+</div>

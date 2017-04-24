@@ -13,10 +13,11 @@ namespace ACETreasureHunt.DAL
         public UnitOfWork(ACEContext context)
         {
             System.Data.Entity.Database.SetInitializer<ACEContext>(null);
-            _context = context;            
+            _context = context;
             Events = new EventRepository(_context);
             Teams = new TeamRepository(_context);
             Staffs = new StaffRepository(_context);
+            PitStops = new PitStopRepository(_context);
             //Authors = new PitStopRepository(_context);
         }
 

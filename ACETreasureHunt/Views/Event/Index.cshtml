@@ -1,51 +1,78 @@
-﻿@model IEnumerable<ACETreasureHunt.Models.Event>
+﻿<head>
+    <link href="@Url.Content("~/Content/eventdetails.css")" rel="stylesheet" type="text/css" />
+    
+</head>
+<style>
+  body{
+        min-width:1000px; /* suppose you want minimun width of 1000px */
+        width: auto !important;  /* Firefox will set width as auto */
+        width:1000px;
+    }
+</style>
+
+@model IEnumerable<ACETreasureHunt.Models.Event>
 
 @{
     ViewBag.Title = "Index";
 }
-
-<h2>Index</h2>
-
-<p>
+<body>
+    <div class="container well" style="margin-top:50px;background-color: rgba(0, 0, 0, 0.26);border: 1px solid rgba(0, 0, 0, 0.075);">
+<h2 style="color:aliceblue">Event Details</h2>
+    
+    @if(Context.User.Identity.IsAuthenticated) {
+    <button type="button" class="btn btn-primary btn-lg btn3d">
     @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.StartDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Address)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Status)
-        </th>
-        <th></th>
-    </tr>
+    </button>
+    }
+    <div class="row">
+@foreach (var item in Model) 
+        {
+     
+<div class="twPc-div left">
+    <a class="twPc-bg twPc-block"></a>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StartDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Address)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Status)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
+	<div style="color:aliceblue;">
+		<div class="twPc-button">
+            @if(Context.User.Identity.IsAuthenticated) {
+        <b style="background-color:cadetblue;color:aliceblue;border-radius:5px">   @Html.ActionLink("Edit ", "Edit", new { id=item.Id }) </b>
+            }
+        <b style="background-color:cadetblue;color:aliceblue;border-radius:5px">   @Html.ActionLink("Details ", "Details", new { id=item.Id }) </b>
+
+            @if(Context.User.Identity.IsAuthenticated) {
+        <b style="background-color:cadetblue;color:aliceblue;border-radius:5px">    @Html.ActionLink("Delete ", "Delete", new { id=item.Id })</b>
+            }
+           
+		</div>
+			<img alt="Mert Salih Kaplan" src="http://www.develop-online.net/cimages/91ffe7800028504b520fffb29f9bddc5.jpg" class="twPc-avatarImg">
+		<b>Event Name: <b>@Html.DisplayFor(modelItem => item.Name)</b></b><br />
+        
+		<div class="twPc-divStats">
+            
+            <div>
+			<ul class="twPc-Arrange">
+				<li class="twPc-ArrangeSizeFit">
+						<span class="twPc-StatLabel twPc-block">Start Date</span>
+						<span class="twPc-StatValue"><b> @Html.DisplayFor(modelItem => item.StartDate)</b></span>
+					
+				</li>
+				<li class="twPc-ArrangeSizeFit">
+						<span class="twPc-StatLabel twPc-block">Location</span>
+						<span class="twPc-StatValue"><b> @Html.DisplayFor(modelItem => item.Address)</b></span>
+					
+				</li>
+				<li class="twPc-ArrangeSizeFit">
+						<span class="twPc-StatLabel twPc-block">Status</span>
+						<span class="twPc-StatValue"> <b>   @Html.DisplayFor(modelItem => item.Status)</b></span>
+					
+				</li>
+			</ul>
+            </div>
+		</div>
+	</div>
+</div>
+          
+
 }
-
-</table>
+</div>
+        </div>
+</body>
