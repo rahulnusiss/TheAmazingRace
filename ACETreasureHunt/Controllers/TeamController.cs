@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ACETreasureHunt.DAL;
@@ -9,35 +12,35 @@ using System.Data.Entity.Validation;
 
 namespace ACETreasureHunt.Controllers
 {
-    public class StaffController : Controller
+    public class TeamController : Controller
     {
         IUnitOfWork unitOfWork = new UnitOfWork(new ACEContext());
-        // GET: Staff
+
+        // GET: Team
         public ActionResult Index()
         {
-            IEnumerable<Staff> GameStaffs = unitOfWork.Staffs.GetAll();
-            return View(GameStaffs);
+            IEnumerable<Team> GameTeams = unitOfWork.Teams.GetAll();
+            return View(GameTeams);
         }
 
-
-        // GET: Staff/Create
+        // GET: Team/Create
         public ActionResult Create()
         {
-            Staff staff = new Staff();
-            return View(staff);
+            Team team = new Team();
+            return View(team);
         }
 
-        // POST: Staff/Create
+        // POST: Team/Create
         [HttpPost]
-        public ActionResult Create(Staff staff)
+        public ActionResult Create(Team team)
         {
             try
             {
-                unitOfWork.Staffs.Add(staff);
+                unitOfWork.Teams.Add(team);
                 unitOfWork.Complete();
                 return RedirectToAction("Index");
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 if (e.GetType() != typeof(DbEntityValidationException))
                 {
@@ -54,26 +57,26 @@ namespace ACETreasureHunt.Controllers
             }
         }
 
-        // GET: Staff/Edit/5
-        public ActionResult Edit(Staff aceStaff)
+        // GET: Team/Edit/5
+        public ActionResult Edit(Team aceTeam)
         {
-            Staff EventStaff = unitOfWork.Staffs.Get(aceStaff.Id);
-            return View(EventStaff);
+            Team EventTeam = unitOfWork.Teams.Get(aceTeam.Id);
+            return View(EventTeam);
         }
 
-        // POST: Staff/Edit/5
+        // POST: Team/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id,Staff aceStaff)
+        public ActionResult Edit(int id, Team aceTeam)
         {
             try
             {
                 // TODO: Add update logic here
-                Staff staff = unitOfWork.Staffs.Get(aceStaff.Id);
-                UpdateModel(staff);
+                Team team = unitOfWork.Teams.Get(aceTeam.Id);
+                UpdateModel(team);
                 unitOfWork.Complete();
                 return RedirectToAction("Index");
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 if (e.GetType() != typeof(DbEntityValidationException))
                 {
@@ -90,21 +93,21 @@ namespace ACETreasureHunt.Controllers
             }
         }
 
-        // GET: Staff/Delete/5
-        public ActionResult Delete(Staff aceStaff)
+        // GET: Team/Delete/5
+        public ActionResult Delete(Team aceTeam)
         {
-            Staff EventStaff = unitOfWork.Staffs.Get(aceStaff.Id);
-            return View(EventStaff);
+            Team EventTeam = unitOfWork.Teams.Get(aceTeam.Id);
+            return View(EventTeam);
         }
-        
+
         // POST: Staff/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, Staff aceStaff)
+        public ActionResult Delete(int id, Team aceTeam)
         {
             try
             {
-                Staff staff = unitOfWork.Staffs.Get(aceStaff.Id);
-                unitOfWork.Staffs.Remove(staff);
+                Team team = unitOfWork.Teams.Get(aceTeam.Id);
+                unitOfWork.Teams.Remove(team);
                 unitOfWork.Complete();
                 return RedirectToAction("Index");
             }
