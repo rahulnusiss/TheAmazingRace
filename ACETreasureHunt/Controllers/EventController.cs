@@ -119,22 +119,23 @@ namespace ACETreasureHunt.Controllers
         }
 
         // GET: Event/Edit/5
+        
         public ActionResult Edit(Event aceEvent)
         {
-            Team EventTeam = new Team();
-            return View(EventTeam);
+            Event editEvent = unitOfWork.Events.Get(aceEvent.Id);
+            return View(editEvent);
         }
 
         // POST: Event/Edit/5
         [HttpPost]
         //public ActionResult Edit(int id, FormCollection collection)
-        public ActionResult Edit(Event ACEEvent, Team ACETeam)
+        public ActionResult Edit(int id, Event aceEvent)
         {
             try
             {
                 // TODO: Add update logic here
-                ACETeam.EventID = ACEEvent.Id;
-                unitOfWork.Teams.Add(ACETeam);
+                Event modifyEvent = unitOfWork.Events.Get(aceEvent.Id);
+                UpdateModel(modifyEvent);
                 unitOfWork.Complete();
                 return RedirectToAction("Index");
             }
@@ -144,6 +145,7 @@ namespace ACETreasureHunt.Controllers
             }
         }
 
+        /*
         // GET: Event/Delete/5
         public ActionResult Delete(int id)
         {
@@ -164,6 +166,6 @@ namespace ACETreasureHunt.Controllers
             {
                 return View();
             }
-        }
+        }*/
     }
 }
