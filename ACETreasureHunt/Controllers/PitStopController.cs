@@ -12,9 +12,8 @@ using System.Data.Entity.Validation;
 
 namespace ACETreasureHunt.Controllers
 {
-    public class PitStopsController : Controller
+    public class PitStopController : Controller
     {
-
         IUnitOfWork unitOfWork = new UnitOfWork(new ACEContext());
 
         // GET: PitStop
@@ -31,7 +30,6 @@ namespace ACETreasureHunt.Controllers
             return View(pitstop);
         }
 
-        // POST: PitStop/Create
         [HttpPost]
         public ActionResult Create(PitStop pitstop)
         {
@@ -128,6 +126,5 @@ namespace ACETreasureHunt.Controllers
                 return View();
             }
         }
-
     }
 }
