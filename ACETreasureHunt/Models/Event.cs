@@ -22,8 +22,7 @@ namespace ACETreasureHunt.Models
 
         public string Address { get; set; }
 
-        [Required]
-        public string Status { get; set; }
+       
         
     }
 }

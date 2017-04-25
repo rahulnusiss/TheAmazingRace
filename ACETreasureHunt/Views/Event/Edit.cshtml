@@ -1,7 +1,6 @@
 ﻿<head>
-<link href="@Url.Content("~/Content/home.css")" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("~/Content/teamcreate.css")" rel="stylesheet" type="text/css" />
 </head>
-
 @model ACETreasureHunt.Models.Event
 
 @{
@@ -9,7 +8,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="container abc white">
-@using (Html.BeginForm())
+<h2>Event</h2>
+
+@using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
@@ -22,31 +23,24 @@
         <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
         	<div class="panel panel-default">
         		<div class="panel-heading">
-			    		<h3 class="panel-title">Edit Event details<small>..!</small></h3>
+			    		<h3 class="panel-title">Edit Event Details<small>..!</small></h3>
 			 			</div>
 			 			<div class="panel-body">
 			    		<form role="form">
 			    			<div class="form-group">
                                 @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", placeholder = "Event Name" } })
-                                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })			    			
+                                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })		    			
 			    			</div>
                             <div class="form-group">
-                                @Html.EditorFor(model => model.StartDate, new { htmlAttributes = new { @class = "form-control", placeholder = "Start Date" } })
-                                @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "text-danger" })	
+                                 @Html.EditorFor(model => model.StartDate, new { htmlAttributes = new { @class = "form-control", placeholder = "Start Date" } })
+                                 @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "text-danger" })	
                             </div>
 			    			<div class="form-group">
                                 @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", placeholder = "Address" } })
                                 @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })			 
 			    			</div>
-			    			<!--<div class="form-group">
-			    				@Html.EditorFor(model => model.Status, new { htmlAttributes = new { @class = "form-control", placeholder = "Status" } })
-                                 @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
-			    			</div>-->
 			    			
-                           
-			    			
-			    			
-			    			<input type="submit" value="Save" class="btn btn-info btn-block">
+			    			<input type="submit" value="Save" class="btn btn-info btn-block" />
 			    		
 			    		</form>
 			    	</div>
@@ -61,5 +55,7 @@
     @Html.ActionLink("Back to List", "Index")
 </div>
 
-</div>
+
+
+
 

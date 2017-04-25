@@ -4,7 +4,7 @@
 </head>
 <style>
   body{
-        min-width:1000px; /* suppose you want minimun width of 1000px */
+        min-width:700px; /* suppose you want minimun width of 1000px */
         width: auto !important;  /* Firefox will set width as auto */
         width:1000px;
     }
@@ -27,7 +27,6 @@
     <div class="row" style="margin-left:20px;">
 @foreach (var item in Model) 
         {
-     
 <div class="twPc-div left">
     <a class="twPc-bg twPc-block"></a>
 
@@ -42,7 +41,7 @@
            
 		</div>
 			<img alt="team" src="http://www.develop-online.net/cimages/91ffe7800028504b520fffb29f9bddc5.jpg" class="twPc-avatarImg">
-		<b>Event Name: <b>@Html.DisplayFor(modelItem => item.Name)</b></b><br />
+		<b>Event: <b>@Html.DisplayFor(modelItem => item.Name)</b></b><br />
         
 		<div class="twPc-divStats">
             
@@ -57,12 +56,7 @@
 						<span class="twPc-StatLabel twPc-block">Location</span>
 						<span class="twPc-StatValue"><b> @Html.DisplayFor(modelItem => item.Address)</b></span>
 					
-				</li>
-				<!--<li class="twPc-ArrangeSizeFit">
-						<span class="twPc-StatLabel twPc-block">Status</span>
-						<span class="twPc-StatValue"> <b>   @Html.DisplayFor(modelItem => item.Status)</b></span>
-					
-				</li>-->
+				</li>				
 			</ul>
             </div>
 		</div>

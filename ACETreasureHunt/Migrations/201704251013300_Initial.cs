@@ -15,7 +15,6 @@ namespace ACETreasureHunt.Migrations
                         Name = c.String(maxLength: 50),
                         StartDate = c.DateTime(nullable: false),
                         Address = c.String(),
-                        Status = c.String(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
             
