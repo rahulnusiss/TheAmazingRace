@@ -192,6 +192,7 @@
     <Compile Include="Controllers\EventController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PitStopController.cs" />
     <Compile Include="Controllers\StaffController.cs" />
     <Compile Include="Controllers\TeamController.cs" />
     <Compile Include="DAL\ACEContext.cs" />
@@ -211,9 +212,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201704251013300_Initial.cs" />
-    <Compile Include="Migrations\201704251013300_Initial.Designer.cs">
-      <DependentUpon>201704251013300_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201704251215565_Initial.cs" />
+    <Compile Include="Migrations\201704251215565_Initial.Designer.cs">
+      <DependentUpon>201704251215565_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -293,16 +294,18 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Event\Details.cshtml" />
     <Content Include="Views\Event\Index.cshtml" />
-    <Content Include="Views\Staff\Create.cshtml" />
-    <Content Include="Views\Staff\Index.cshtml" />
-    <Content Include="Views\Staff\Edit.cshtml" />
     <Content Include="Views\Team\Index.cshtml" />
     <Content Include="Views\Team\Create.cshtml" />
     <Content Include="Views\Team\Edit.cshtml" />
-    <Content Include="Views\Staff\Delete.cshtml" />
     <Content Include="Views\Team\Delete.cshtml" />
     <Content Include="Views\Event\Edit.cshtml" />
     <Content Include="Views\Event\Create.cshtml" />
+    <Content Include="Views\Staff\Index.cshtml" />
+    <Content Include="Views\Staff\Create.cshtml" />
+    <Content Include="Views\Staff\Delete.cshtml" />
+    <Content Include="Views\Staff\Edit.cshtml" />
+    <Content Include="Views\PitStop\Index.cshtml" />
+    <Content Include="Views\PitStop\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -323,8 +326,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201704251013300_Initial.resx">
-      <DependentUpon>201704251013300_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201704251215565_Initial.resx">
+      <DependentUpon>201704251215565_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
