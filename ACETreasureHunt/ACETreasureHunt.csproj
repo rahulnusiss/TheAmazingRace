@@ -236,6 +236,7 @@
     <Content Include="Content\home.css" />
     <Content Include="Content\teamcreate.css" />
     <Content Include="Content\teamdetails.css" />
+    <Content Include="Content\threedetails.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
