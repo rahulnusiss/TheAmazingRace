@@ -13,19 +13,21 @@ namespace ACETreasureHunt.Models
 
         [RegularExpression(@"^[A-Z]+[a-zA-Z''-'\s]*$")]
         [StringLength(50, MinimumLength = 1)]
-        [Display(Name = "Event Name")]
+        [Display(Name = "Pit-Stop Name")]
         public string PitStopName { get; set; }
+
+        public string Description { get; set; }
 
         [Required]
         public int PitStopNumber { get; set; }
 
         [Required]
         [Range(-90.000, 90.0000)]
-        public int latitude { get; set; }
+        public double Latitude { get; set; }
 
         [Required]
         [Range(-180.000, 180.0000)]
-        public int longitude { get; set; }
+        public int Longitude { get; set; }
 
         public int EventID { get; set; }
     }

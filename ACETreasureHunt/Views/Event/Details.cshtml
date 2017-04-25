@@ -1,15 +1,17 @@
-﻿
-
+﻿<head>
+<link href="@Url.Content("~/Content/home.css")" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("~/Content/threedetails.css")" rel="stylesheet" type="text/css" />
+</head>
 @model IEnumerable<ACETreasureHunt.Models.Team>
 
 @{
     ViewBag.Title = "Details";
 }
-<div class="container well">
-<h2>Details</h2>
+<div class="container abc">
+<h2 class="white">Details</h2>
 
 
-    @if(Context.User.Identity.IsAuthenticated) {
+<!--    @if(Context.User.Identity.IsAuthenticated) {
     <button type="button" class="btn btn-primary btn-lg btn3d">
    @Html.ActionLink("Create New", "Create")
     </button>
@@ -39,14 +41,62 @@
     </tr>
 }
 
-</table>
+</table>-->
 
-@foreach (var team in ViewBag.MyList)
-{
-    <div>@team.Name</div>
-}
+    <div class="pricing-table pricing-three-column row">
+        <div class="plan col-sm-4 col-lg-4">
+          <div class="plan-name-bronze">
+              <h3>Teams</h3>
+            <img  class="ack" src="http://software.improve1.com/content/itpvt-team3.jpg" alt="myImagetitle" />
+          </div>
+          <ul>
+              @foreach (var team in ViewBag.MyList)
+                   {
+                   <li class="plan-feature">@team.Name</li>
+                   }
+           
+            <li class="plan-feature"><a href="#" class="btn btn-primary btn-plan-select" onclick="location.href='@Url.Action("Index", "Team")'"><i class="icon-white icon-ok"></i>Manage</a></li>
+          </ul>
+        </div>
 
-<h1>Events</h1>
+
+        <div style="z-index:55;" class="plan col-sm-4 col-lg-4">
+          <div class="plan-name-silver">
+              <h3>Staffs</h3>
+            <img  class="ack" src="http://www.affordablesantafedentist.com/wp-content/uploads/2012/08/118251024.jpg" alt="myImagetitle" />
+          </div>
+          <ul>
+              @foreach (var event2 in ViewBag.MyList2)
+                {
+                    <li class="plan-feature">@event2.Name</li>
+                }
+
+             <li class="plan-feature"><a href="#" class="btn btn-primary btn-plan-select"><i class="icon-white icon-ok"></i>Manage</a></li>
+          </ul>
+        </div>
+        <div class="plan col-sm-4 col-lg-4">
+          <div class="plan-name-gold">
+              <h3>PitStop</h3>
+            <img  class="ack" src="http://www.clipartkid.com/images/643/mail-the-author-at-mom-about-town-dvo-gmail-com-visit-www-PyeKRm-clipart.png" alt="myImagetitle" />
+          </div>
+          <ul>
+           <!-- @foreach (var event3 in ViewBag.MyList3)
+                {
+                    <li class="plan-feature">@event3.Name</li>
+                }-->
+            <li class="plan-feature"><a href="#" class="btn btn-primary btn-plan-select"><i class="icon-white icon-ok"></i>Manage</a></li>
+          </ul>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
 
 @foreach (var event2 in ViewBag.MyList2)
 {

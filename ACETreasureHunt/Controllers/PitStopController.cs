@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ACETreasureHunt.DAL;
@@ -9,35 +12,34 @@ using System.Data.Entity.Validation;
 
 namespace ACETreasureHunt.Controllers
 {
-    public class StaffController : Controller
+    public class PitStopController : Controller
     {
         IUnitOfWork unitOfWork = new UnitOfWork(new ACEContext());
-        // GET: Staff
+
+        // GET: PitStop
         public ActionResult Index()
         {
-            IEnumerable<Staff> GameStaffs = unitOfWork.Staffs.GetAll();
-            return View(GameStaffs);
+            IEnumerable<PitStop> EventPitStops = unitOfWork.PitStops.GetAll();
+            return View(EventPitStops);
         }
 
-
-        // GET: Staff/Create
+        // GET: PitStop/Create
         public ActionResult Create()
         {
-            Staff staff = new Staff();
-            return View(staff);
+            PitStop pitstop = new PitStop();
+            return View(pitstop);
         }
 
-        // POST: Staff/Create
         [HttpPost]
-        public ActionResult Create(Staff staff)
+        public ActionResult Create(PitStop pitstop)
         {
             try
             {
-                unitOfWork.Staffs.Add(staff);
+                unitOfWork.PitStops.Add(pitstop);
                 unitOfWork.Complete();
                 return RedirectToAction("Index");
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 if (e.GetType() != typeof(DbEntityValidationException))
                 {
@@ -54,26 +56,26 @@ namespace ACETreasureHunt.Controllers
             }
         }
 
-        // GET: Staff/Edit/5
-        public ActionResult Edit(Staff aceStaff)
+        // GET: PitStop/Edit/5
+        public ActionResult Edit(PitStop acePitStop)
         {
-            Staff EventStaff = unitOfWork.Staffs.Get(aceStaff.Id);
-            return View(EventStaff);
+            PitStop EventPitStop = unitOfWork.PitStops.Get(acePitStop.Id);
+            return View(EventPitStop);
         }
 
-        // POST: Staff/Edit/5
+        // POST: PitStop/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id,Staff aceStaff)
+        public ActionResult Edit(int id, PitStop acePitStop)
         {
             try
             {
                 // TODO: Add update logic here
-                Staff staff = unitOfWork.Staffs.Get(aceStaff.Id);
-                UpdateModel(staff);
+                PitStop pitstop = unitOfWork.PitStops.Get(acePitStop.Id);
+                UpdateModel(pitstop);
                 unitOfWork.Complete();
                 return RedirectToAction("Index");
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 if (e.GetType() != typeof(DbEntityValidationException))
                 {
@@ -90,21 +92,21 @@ namespace ACETreasureHunt.Controllers
             }
         }
 
-        // GET: Staff/Delete/5
-        public ActionResult Delete(Staff aceStaff)
+        // GET: PitStop/Delete/5
+        public ActionResult Delete(PitStop acePitStop)
         {
-            Staff EventStaff = unitOfWork.Staffs.Get(aceStaff.Id);
-            return View(EventStaff);
+            PitStop EventPitStop = unitOfWork.PitStops.Get(acePitStop.Id);
+            return View(EventPitStop);
         }
-        
-        // POST: Staff/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, Staff aceStaff)
+
+        // POST: PitStop/Delete/5
+        [HttpPost, ActionName("Delete")]
+        public ActionResult Delete(int id, PitStop acePitStop)
         {
             try
             {
-                Staff staff = unitOfWork.Staffs.Get(aceStaff.Id);
-                unitOfWork.Staffs.Remove(staff);
+                PitStop pitstop = unitOfWork.PitStops.Get(acePitStop.Id);
+                unitOfWork.PitStops.Remove(pitstop);
                 unitOfWork.Complete();
                 return RedirectToAction("Index");
             }

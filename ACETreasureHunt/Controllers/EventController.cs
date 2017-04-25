@@ -23,8 +23,6 @@ namespace ACETreasureHunt.Controllers
         // GET: Event/Details/5
         public ActionResult Details(Event aceEvent)
         {
-
-            //IEnumerable<Event> GameEvents = unitOfWork.Events.GetAllEvents();
             IEnumerable<Team> Teams = unitOfWork.Teams.GetAll();
             List<Team> ThisEventTeams = new List<Team>();
             foreach (var item in Teams)
@@ -60,26 +58,6 @@ namespace ACETreasureHunt.Controllers
             ViewBag.MyList3 = ThisEventPitStops;
 
             return View(ThisEventTeams);
-
-            /*
-            //Event GameEvent = unitOfWork.Events.Get(id);
-            if ( EventStatus == "Completed" )
-            {
-                //Return Completed Details view
-                return View(ThisEventTeams);
-            }
-            
-            else if (aceEvent.Id == 2)
-            {
-                //Return Current Details view
-            }
-            else if (aceEvent.Id == 3)
-            {
-                //Return Scheduled Details view
-            }
-
-            return View(); */
-
         }
 
         // GET: Event/Create
@@ -119,45 +97,23 @@ namespace ACETreasureHunt.Controllers
         }
 
         // GET: Event/Edit/5
+        
         public ActionResult Edit(Event aceEvent)
         {
-            Team EventTeam = new Team();
-            return View(EventTeam);
+            Event editEvent = unitOfWork.Events.Get(aceEvent.Id);
+            return View(editEvent);
         }
 
         // POST: Event/Edit/5
         [HttpPost]
-        //public ActionResult Edit(int id, FormCollection collection)
-        public ActionResult Edit(Event ACEEvent, Team ACETeam)
+        public ActionResult Edit(int id, Event aceEvent)
         {
             try
             {
                 // TODO: Add update logic here
-                ACETeam.EventID = ACEEvent.Id;
-                unitOfWork.Teams.Add(ACETeam);
+                Event modifyEvent = unitOfWork.Events.Get(aceEvent.Id);
+                UpdateModel(modifyEvent);
                 unitOfWork.Complete();
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Event/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Event/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
                 return RedirectToAction("Index");
             }
             catch

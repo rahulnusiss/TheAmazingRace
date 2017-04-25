@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ACETreasureHunt.Models.Staff>
+﻿@model IEnumerable<ACETreasureHunt.Models.PitStop>
 
 @{
     ViewBag.Title = "Index";
@@ -13,7 +13,13 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.DisplayNameFor(model => model.PitStopName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PitStopNumber)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Latitude)
@@ -30,7 +36,13 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Name)
+            @Html.DisplayFor(modelItem => item.PitStopName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PitStopNumber)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Latitude)

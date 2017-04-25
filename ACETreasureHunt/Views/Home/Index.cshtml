@@ -8,6 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Untitled Document</title>
 <link href="@Url.Content("~/Content/home.css")" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("~/Content/flipflop.css")" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -15,30 +16,60 @@
 <video autoplay loop id="video-background" muted>
   <source src="http://mazwai.com/system/posts/videos/000/000/109/webm/leif_eliasson--glaciartopp.webm?1410742112" type="video/mp4">
 </video>
-    <div class="row" style="margin-left: 65px;margin-top: 100px;">
+    <div class="row" style="margin-left: 65px;margin-top: 75px;">
         
-     		<div>
+     		<div class="col-lg-6 col-md-6 col-sm-12">
             <h1 style="font-size: 70px;">"<b>ACE</b>"</h1>
             <h3 style="font-size: 50px; color:aliceblue; left: 10%;">RACE TO WIN</h3>
             </div>
-        <div class="row">
+
+            <div class="col-lg-6 col-md-6 col-sm-12">
+               <div><img alt="click me" src="http://shivaninegi.com/img/click_arrow.png" class="click"></div> 
+                <div class="box" onclick="location.href='@Url.Action("Index", "Event")'"><span></span></div>
+            </div>
+        </div>
         
-        <button type="button" class="btn btn-primary btn-lg btn3d" onclick="location.href='@Url.Action("Index", "Event")'"><span class="glyphicon glyphicon-cloud"></span> EVENTS</button>
-        
+
+
+    <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+  <div class="flipper">
+
+
+    <div class="front">
+      <div class="row ab">
+    <div class="col-md-4">
+        <h2 class="abt">Getting started</h2>
+        <p class="about">
+            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
+            enables a clean separation of concerns and gives you full control over markup
+            for enjoyable, agile development.
+        </p>
        
-        <button type="button" class="btn btn-success btn-lg btn3d" onclick="location.href='@Url.Action("MyAction", "MyController")'"><span class="glyphicon glyphicon-ok"></span> TEAMS</button>
+    </div>
+    <div class="col-md-4">
+        <h2 class="abt">Get more libraries</h2>
+        <p class="about">NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
+       
+    </div>
+    <div class="col-md-4">
+        <h2 class="abt">Web Hosting</h2>
+        <p class="about">You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
         
+    </div>
+    </div>
+    </div>
+
+
+
+    <div class="back">
+        <div class="row ab">
+        <h2 class="abt"><u>About</u></h2>
+        <p class="about">The Amazing Race is a reality television game show in which teams of two people race around the world in competition with other teams. Contestants strive to arrive first at "Pit Stops" at the end of each leg of the race to win prizes and to avoid coming in last, which carries the possibility of elimination or a significant disadvantage in the following leg. Contestants travel to and within multiple countries in a variety of transportation modes, including airplanes, hot air balloons, helicopters, trucks, bicycles, taxicabs, cars, trains, buses, boats, and by foot. Clues provided in each leg lead the teams to the next destination or direct them to perform a task, either together or by a single member. These challenges are related in some manner to the country wherein they are located or its culture. Teams are progressively eliminated until three are left; at that point, the team that arrives first in the final leg is awarded the grand prize.</p>
+    </div>
         
-        <button type="button" class="btn btn-info btn-lg btn3d" onclick="location.href='@Url.Action("MyAction", "MyController")'"><span class="glyphicon glyphicon-question-sign"></span> LEADERBOARD</button>
-        </div>
-        </div>
-        
-  	    
+    </div>
+  </div>
 </div>
-<div class="row well">
-    <h3><u>EVENTS</u></h3>
-</div>
-    
 
 </body>
 </html>
