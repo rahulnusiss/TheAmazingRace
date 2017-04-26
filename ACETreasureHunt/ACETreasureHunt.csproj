@@ -235,6 +235,7 @@
     <Content Include="Content\eventindex.css" />
     <Content Include="Content\flipflop.css" />
     <Content Include="Content\home.css" />
+    <Content Include="Content\pitstop.css" />
     <Content Include="Content\staff.css" />
     <Content Include="Content\staffindex.css" />
     <Content Include="Content\teamcreate.css" />
