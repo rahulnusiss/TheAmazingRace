@@ -232,9 +232,12 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\editevent.css" />
-    <Content Include="Content\eventdetails.css" />
+    <Content Include="Content\eventindex.css" />
     <Content Include="Content\flipflop.css" />
     <Content Include="Content\home.css" />
+    <Content Include="Content\pitstop.css" />
+    <Content Include="Content\staff.css" />
+    <Content Include="Content\staffindex.css" />
     <Content Include="Content\teamcreate.css" />
     <Content Include="Content\teamdetails.css" />
     <Content Include="Content\threedetails.css" />
@@ -265,9 +268,7 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Views\Web.config">
-      <SubType>Designer</SubType>
-    </Content>
+    <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -306,6 +307,8 @@
     <Content Include="Views\Staff\Edit.cshtml" />
     <Content Include="Views\PitStop\Index.cshtml" />
     <Content Include="Views\PitStop\Delete.cshtml" />
+    <Content Include="Views\PitStop\Create.cshtml" />
+    <Content Include="Views\PitStop\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
