@@ -1,5 +1,5 @@
 ﻿<head>
-    <link href="@Url.Content("~/Content/eventdetails.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/eventindex.css")" rel="stylesheet" type="text/css" />
     
 </head>
 <style>
@@ -33,16 +33,14 @@
 	<div style="color:aliceblue;">
 		<div class="twPc-button">
             @if(Context.User.Identity.IsAuthenticated) {
-        <b style="background-color:cadetblue;color:aliceblue;border-radius:5px">   @Html.ActionLink("Edit ", "Edit", new { id=item.Id }) </b>
+        <b style="background-color:cadetblue;color:aliceblue;border-radius:2px">   @Html.ActionLink("Edit ", "Edit", new { id=item.Id }) </b>
             }
-        <b style="background-color:cadetblue;color:aliceblue;border-radius:5px">   @Html.ActionLink("Details ", "Details", new { id=item.Id }) </b>
-
-            
-           
+        <b style="background-color:cadetblue;color:aliceblue;border-radius:2px">   @Html.ActionLink("Details ", "Details", new { id=item.Id }) </b> 
 		</div>
-			<img alt="team" src="http://www.develop-online.net/cimages/91ffe7800028504b520fffb29f9bddc5.jpg" class="twPc-avatarImg">
+
+			<img alt="team" src="http://www.nubimagazine.com/wp-content/uploads/2014/11/destiny-game.jpg" class="twPc-avatarImg">
 		<b>Event: <b>@Html.DisplayFor(modelItem => item.Name)</b></b><br />
-        
+       
 		<div class="twPc-divStats">
             
             <div>

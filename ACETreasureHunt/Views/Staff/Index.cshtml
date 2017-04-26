@@ -1,51 +1,70 @@
-﻿@model IEnumerable<ACETreasureHunt.Models.Staff>
+﻿
+<head>
+    <link href="@Url.Content("~/Content/staffindex.css")" rel="stylesheet" type="text/css" />
+ 
+</head>
+<style>
+  body{
+        min-width:700px; /* suppose you want minimun width of 1000px */
+        width: auto !important;  /* Firefox will set width as auto */
+        width:1000px;
+    }
+</style>
+
+@model IEnumerable<ACETreasureHunt.Models.Staff>
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Index</h2>
-
-<p>
+<body>
+    <div class="container well" style="margin-top:50px;background-color: rgba(0, 0, 0, 0.26);border: 1px solid rgba(0, 0, 0, 0.075);">
+<h2 style="color:aliceblue">Team Details</h2>
+    
+    @if(Context.User.Identity.IsAuthenticated) {
+    <button type="button" class="btn btn-primary btn-lg btn3d">
     @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Latitude)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Longitude)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EventID)
-        </th>
-        <th></th>
-    </tr>
+    </button>
+    }
+    <div class="row" style="margin-left:20px;">
+@foreach (var item in Model) 
+        {
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Latitude)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Longitude)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EventID)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
+<div class="twPc-div left">
+    <a class="ack twPc-block"></a>
+
+	<div style="color:aliceblue;">
+		<div class="twPc-button">
+            @if(Context.User.Identity.IsAuthenticated) {
+        <b style="background-color:cadetblue;color:aliceblue;border-radius:5px">    @Html.ActionLink("Edit", "Edit", new { id=item.Id }) </b>
+            <b style="background-color:cadetblue;color:aliceblue;border-radius:5px">    @Html.ActionLink("Delete", "Delete", new { id=item.Id }) </b>
+           } 
+        </div>
+			<img alt="team" src="https://s-media-cache-ak0.pinimg.com/736x/f0/5b/91/f05b9167a3c744c96012d273b5807ab7.jpg" class="twPc-avatarImg">
+		<b>Staff: <b>@Html.DisplayFor(modelItem => item.Name)</b></b><br />
+        
+		<div class="twPc-divStats">
+            
+            <div style="align-content:center;">
+			<ul class="twPc-Arrange"style="align-content:center;">
+                Position:
+				<li class="twPc-ArrangeSizeFit">
+						<span class="twPc-StatLabel twPc-block">Latitude:</span>
+						<span class="twPc-StatValue"><b> @Html.DisplayFor(modelItem => item.Latitude)</b></span>
+					
+				</li>
+				<li class="twPc-ArrangeSizeFit">
+						<span class="twPc-StatLabel twPc-block">Longitude</span>
+						<span class="twPc-StatValue"><b> @Html.DisplayFor(modelItem => item.Longitude)</b></span>
+				
+			</ul>
+            </div>
+		</div>
+	</div>
+</div>
+          
+
 }
-
-</table>
+</div>
+        </div>
+</body>
