@@ -212,9 +212,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201704260328578_Initial.cs" />
-    <Compile Include="Migrations\201704260328578_Initial.Designer.cs">
-      <DependentUpon>201704260328578_Initial.cs</DependentUpon>
+<<<<<<< HEAD
+    <Compile Include="Migrations\201704240210388_Initial.cs" />
+    <Compile Include="Migrations\201704240210388_Initial.Designer.cs">
+      <DependentUpon>201704240210388_Initial.cs</DependentUpon>
+=======
+    <Compile Include="Migrations\201704261018072_Initial.cs" />
+    <Compile Include="Migrations\201704261018072_Initial.Designer.cs">
+      <DependentUpon>201704261018072_Initial.cs</DependentUpon>
+>>>>>>> origin/vimal
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -235,13 +241,6 @@
     <Content Include="Content\eventindex.css" />
     <Content Include="Content\flipflop.css" />
     <Content Include="Content\home.css" />
-    <Content Include="Content\images\layers-2x.png" />
-    <Content Include="Content\images\layers.png" />
-    <Content Include="Content\images\marker-icon-2x.png" />
-    <Content Include="Content\images\marker-icon.png" />
-    <Content Include="Content\images\marker-shadow.png" />
-    <Content Include="Content\leaflet-routing-machine.css" />
-    <Content Include="Content\leaflet.css" />
     <Content Include="Content\pitstop.css" />
     <Content Include="Content\staff.css" />
     <Content Include="Content\staffindex.css" />
@@ -255,9 +254,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config" />
-    <Content Include="Scripts\countries.geojson" />
     <None Include="Scripts\jquery-1.10.2-vsdoc.js" />
-    <Content Include="Scripts\countries.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -265,10 +262,6 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\L.Routing.GraphHopper.js" />
-    <Content Include="Scripts\leaflet-routing-machine.js" />
-    <Content Include="Scripts\leaflet.js" />
-    <Content Include="Scripts\lrm-graphhopper.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
@@ -281,7 +274,9 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Views\Web.config" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -307,12 +302,13 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Event\Create.cshtml" />
+    <Content Include="Views\Event\Details.cshtml" />
     <Content Include="Views\Event\Edit.cshtml" />
     <Content Include="Views\Event\Index.cshtml" />
     <Content Include="Views\Team\Index.cshtml" />
     <Content Include="Views\Team\Create.cshtml" />
     <Content Include="Views\Team\Edit.cshtml" />
-    <Content Include="Views\Team\Delete.cshtml" />
+    <Content Include="Views\Team\Delete.cshtml" />    
     <Content Include="Views\Staff\Index.cshtml" />
     <Content Include="Views\Staff\Create.cshtml" />
     <Content Include="Views\Staff\Delete.cshtml" />
@@ -321,7 +317,6 @@
     <Content Include="Views\PitStop\Delete.cshtml" />
     <Content Include="Views\PitStop\Create.cshtml" />
     <Content Include="Views\PitStop\Edit.cshtml" />
-    <Content Include="Views\Event\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -342,8 +337,13 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201704260328578_Initial.resx">
-      <DependentUpon>201704260328578_Initial.cs</DependentUpon>
+<<<<<<< HEAD
+    <EmbeddedResource Include="Migrations\201704240210388_Initial.resx">
+      <DependentUpon>201704240210388_Initial.cs</DependentUpon>
+=======
+    <EmbeddedResource Include="Migrations\201704261018072_Initial.resx">
+      <DependentUpon>201704261018072_Initial.cs</DependentUpon>
+>>>>>>> origin/vimal
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

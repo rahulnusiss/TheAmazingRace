@@ -23,9 +23,20 @@ namespace ACETreasureHunt
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/vendor").Include(
+                "~/Scripts/leaflet.js",
+                      "~/Scripts/countries.js",
+                      "~/Scripts/leaflet-routing-machine.js",
+                      "~/Scripts/lrm-graphhopper.js",
+                      "~/Scripts/countries.geojson"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new StyleBundle("~/Content/vendorcss").Include(
+                      "~/Content/leaflet-routing-machine.css",
+                      "~/Content/leaflet.css"));
         }
     }
 }
