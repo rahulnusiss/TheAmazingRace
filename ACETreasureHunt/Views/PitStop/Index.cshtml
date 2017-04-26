@@ -21,6 +21,11 @@
     <div class="container well" style="margin-top:50px;background-color: rgba(0, 0, 0, 0.26);border: 1px solid rgba(0, 0, 0, 0.075);">
 <h2 style="color:aliceblue">Pitstop Details</h2>
     
+    @if(Context.User.Identity.IsAuthenticated) {
+    <button type="button" class="btn btn-primary btn-lg btn3d">
+    @Html.ActionLink("Create New", "Create")
+    </button>
+    }
     
     <div class="row" style="margin-left:20px;">
 @foreach (var item in Model) { 
@@ -32,8 +37,8 @@
 	<div style="color:aliceblue;">
 		<div class="twPc-button">
             @if(Context.User.Identity.IsAuthenticated) {
-        <b style="background-color:cadetblue;color:aliceblue;border-radius:5px">    @Html.ActionLink("Edit", "Edit", new { id=item.Id }) </b>
-            <b style="background-color:cadetblue;color:aliceblue;border-radius:5px">    @Html.ActionLink("Delete", "Delete", new { id=item.Id }) </b>
+        <b style="background-color: #232323;color:aliceblue;border-radius:2px">    @Html.ActionLink("Edit", "Edit", new { id=item.Id }) </b>
+            <b style="background-color: #232323;color:aliceblue;border-radius:2px">    @Html.ActionLink("Delete", "Delete", new { id=item.Id }) </b>
            } 
         </div>
 			<img alt="team" src="https://cdn.pixabay.com/photo/2016/03/28/14/19/destination-1285851_960_720.png" class="twPc-avatarImg">

@@ -80,10 +80,10 @@
             <img  class="ack" src="http://www.clipartkid.com/images/643/mail-the-author-at-mom-about-town-dvo-gmail-com-visit-www-PyeKRm-clipart.png" alt="myImagetitle" />
           </div>
           <ul>
-           <!-- @foreach (var event3 in ViewBag.MyList3)
+           @foreach (var event3 in ViewBag.MyList3)
                 {
-                    <li class="plan-feature">@event3.Name</li>
-                }-->
+                    <li class="plan-feature">@event3.PitStopName</li>
+                }
             <li class="plan-feature"><a href="#" class="btn btn-primary btn-plan-select" onclick="location.href='@Url.Action("Index", "PitStop")'"><i class="icon-white icon-ok"></i>Manage</a></li>
           </ul>
         </div>

@@ -3,7 +3,7 @@ namespace ACETreasureHunt.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class initial : DbMigration
+    public partial class Initial : DbMigration
     {
         public override void Up()
         {
@@ -37,7 +37,7 @@ namespace ACETreasureHunt.Migrations
                         Description = c.String(),
                         PitStopNumber = c.Int(nullable: false),
                         Latitude = c.Double(nullable: false),
-                        Longitude = c.Int(nullable: false),
+                        Longitude = c.Double(nullable: false),
                         EventID = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);

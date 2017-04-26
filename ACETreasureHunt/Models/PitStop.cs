@@ -27,7 +27,7 @@ namespace ACETreasureHunt.Models
 
         [Required]
         [Range(-180.000, 180.0000)]
-        public int Longitude { get; set; }
+        public double Longitude { get; set; }
 
         public int EventID { get; set; }
     }

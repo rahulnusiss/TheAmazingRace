@@ -30,6 +30,7 @@ namespace ACETreasureHunt.Controllers
             return View(pitstop);
         }
 
+        // POST: PitStop/Create
         [HttpPost]
         public ActionResult Create(PitStop pitstop)
         {
@@ -128,3 +129,4 @@ namespace ACETreasureHunt.Controllers
         }
     }
 }
+
