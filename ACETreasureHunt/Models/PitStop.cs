@@ -10,8 +10,7 @@ namespace ACETreasureHunt.Models
     {
         [Key]
         public int Id { get; set; }
-
-        [RegularExpression(@"^[A-Z]+[a-zA-Z''-'\s]*$")]
+                
         [StringLength(50, MinimumLength = 1)]
         [Display(Name = "Pit-Stop Name")]
         public string PitStopName { get; set; }

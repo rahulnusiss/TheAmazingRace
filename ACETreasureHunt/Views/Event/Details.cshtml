@@ -142,10 +142,8 @@
     </style>
 </head>
 <body>
-    <h1>Naksha</h1>
-    <form id="mapFormId">
-        Distance :
-        <input id="distanceBox" type="text" name="Fname">
+    <h1>Naksha </h1>
+    <form id="mapFormId">        
         <div>
             <label>1 </label><input id="rank1" type="text" name="Fname">
             <label>2 </label><input id="rank2" type="text" name="Fname">
@@ -155,47 +153,8 @@
     <div id="map" class="map"></div>
     <script>
 			<!-- Add countries in map -->
-			var map = L.map('map').setView([43.8476,18.3564], 6);
-			//var countriesLayer = L.geoJson(countries).addTo(map);
-
-			<!-- Legends -->
-			var legend = L.control({position : 'bottomright'});
-			legend.onAdd = function(map){
-				var div = L.DomUtil.create('div','legend');
-				var labels = ["Teams", "Support staff", "Pitstop"];
-				var grades = ['Green', 'Blue', 'Red'];
-				div.innerHTML = '<div><b>Legend</b></div>';
-				for( var i =0; i < grades.length; ++i)
-				{
-					div.innerHTML += '<i style ="background:' +
-					grades[i] +'">&nbsp;&nbsp;</i>&nbsp;&nbsp;' +
-					labels[i] + '<br/>';
-				}
-				return div;
-			}
-			legend.addTo(map);
-
-			<!-- Add Markers in map -->
-			var point1 = [43.86667, 18.566644];
-			var point2 = [20.89963, 89.35665];
-			var iconPoint2 = L.icon (
-			{
-				iconUrl:'MapMarker_Ball__Azure.png',
-				iconSize: [20,20],
-				iconAnchor : [22,94],
-				popupAnchor : [-3,-76]
-			});
-			var point3 = [5.89963, 112.35665];
-			var iconPoint3 = L.icon (
-			{
-				iconUrl:'MapMarker_Ball__Chartreuse.png',
-				iconSize: [20,20],
-				iconAnchor : [22,94],
-				popupAnchor : [-3,-76]
-			});
-			var marker1 = L.marker(point1).addTo(map);
-			var marker2 = L.marker(point2,{icon : iconPoint2}).addTo(map);
-			var marker3 = L.marker(point3,{icon : iconPoint3}).addTo(map);
+			var map = L.map('map').setView([1.3046014, 103.7701238], 6);
+			//var countriesLayer = L.geoJson(countries).addTo(map);		
 
 			<!-- Routing -->
 			var i = 0;
@@ -219,76 +178,77 @@
                    if (moveCounterTeam1 > moveCounterTeam2 && moveCounterTeam1 > moveCounterTeam3)
                     {
                         //Team 1 first
-                       $('#rank1').val("Team1");
+                       $('#rank1').val("@ViewBag.MyList[0].Name");
                         if (moveCounterTeam2 > moveCounterTeam3) {
                             // Team 2 second, Team 3 third
-                            $('#rank2').val("Team2");
-                            $('#rank3').val("Team3");
+                            $('#rank2').val("@ViewBag.MyList[1].Name");
+                            $('#rank3').val("@ViewBag.MyList[2].Name");
                         }
                         else {
                             // Team 3 second, Team 2 third
-                            $('#rank2').val("Team3");
-                            $('#rank3').val("Team2");
+                            $('#rank2').val("@ViewBag.MyList[2].Name");
+                            $('#rank3').val("@ViewBag.MyList[1].Name");
                         }
-                        
+
                     }
                    if (moveCounterTeam2 > moveCounterTeam1 && moveCounterTeam2 > moveCounterTeam3){
                         // Team 2 first
-                       $('#rank1').val("Team2");
+                       $('#rank1').val("@ViewBag.MyList[1].Name");
                        if (moveCounterTeam3 > moveCounterTeam1) {
                            // Team 3 second, Team 1 third
-                           $('#rank2').val("Team3");
-                           $('#rank3').val("Team1");
+                           $('#rank2').val("@ViewBag.MyList[2].Name");
+                           $('#rank3').val("@ViewBag.MyList[0].Name");
                        }
                        else {
                            // Team 1 second, Team 3 third
-                           $('#rank2').val("Team1");
-                           $('#rank3').val("Team3");
+                           $('#rank2').val("@ViewBag.MyList[0].Name");
+                           $('#rank3').val("@ViewBag.MyList[2].Name");
                        }
                     }
                     else {
                         // Team 3 first
-                       $('#rank1').val("Team3");
+                       $('#rank1').val("@ViewBag.MyList[2].Name");
                        if (moveCounterTeam1 > moveCounterTeam2) {
                            // Team 1 second, Team 2 third
-                           $('#rank2').val("Team1");
-                           $('#rank3').val("Team2");
+                           $('#rank2').val("@ViewBag.MyList[0].Name");
+                           $('#rank3').val("@ViewBag.MyList[1].Name");
                        }
                        else {
                            // Team 2 second, Team 1 third
-                           $('#rank2').val("Team2");
-                           $('#rank3').val("Team1");
+                           $('#rank2').val("@ViewBag.MyList[1].Name");
+                           $('#rank3').val("@ViewBag.MyList[0].Name");
                        }
                    }
-                   setTimeout(updateRankings, 3000);
+                   setTimeout(updateRankings, 1000);
                 }
 
 			<!-- 1st way  From 1 to 2-- >
 			var latitude1 = 1.3046014;
 			var longitude1 = 103.7701238;
-			var latitude2 = 1.2838627;
-			var longitude2 = 103.8493554;
-			var startMarker = L.marker([latitude1, longitude1], { draggable: false, title: '1'}).addTo(map);
-			var endMarker = L.marker([latitude2, longitude2], { draggable: false }).addTo(map);
+			var latitude2 = @ViewBag.MyList3[0].Latitude;
+			var longitude2 = @ViewBag.MyList3[0].Longitude;
+            var startMarker = L.marker([latitude1, longitude1], { draggable: false, title: '@ViewBag.MyList[0].Name' }).addTo(map);
+            var eventStartMarker = L.marker([latitude1, longitude1], { draggable: false, title: 'EventStartPoint' }).addTo(map);
+            var endMarker = L.marker([latitude2, longitude2], { draggable: false, title: '@ViewBag.MyList3[0].PitStopName' }).addTo(map);
 
-			var startMarkerTeam2 = L.marker([latitude1, longitude1], { draggable: false, title: '2'}).addTo(map);
-			var startMarkerTeam3 = L.marker([latitude1, longitude1], { draggable: false, title: '3'}).addTo(map);
+			var startMarkerTeam2 = L.marker([latitude1, longitude1], { draggable: false, title: '@ViewBag.MyList[1].Name'}).addTo(map);
+			var startMarkerTeam3 = L.marker([latitude1, longitude1], { draggable: false, title: '@ViewBag.MyList[2].Name'}).addTo(map);
 
 			<!-- 2nd way, From 2 to 3 -- >
 			var routeControl2 = null;
 			var coordArr2 = {} ;
-			var latitude3 = 1.300599;
-			var longitude3 = 103.8527043;
-			var startMarker2 = L.marker([latitude2, longitude2], { draggable: false}).addTo(map);
-			var endMarker2 = L.marker([latitude3, longitude3], { draggable: false}).addTo(map);
+			var latitude3 = @ViewBag.MyList3[1].Latitude;
+			var longitude3 = @ViewBag.MyList3[1].Longitude;
+			var startMarker2 = L.marker([latitude2, longitude2], { draggable: false, title :'@ViewBag.MyList3[0].PitStopName'}).addTo(map);
+			var endMarker2 = L.marker([latitude3, longitude3], { draggable: false, title :'@ViewBag.MyList3[1].PitStopName'}).addTo(map);
 
 			<!-- 3rd way From 3 to 4-- >
 			var routeControl3 = null;
 			var coordArr3 = {} ;
-			var latitude4 = 1.3075337;
-			var longitude4 = 103.8609886;
-			var startMarker3 = L.marker([latitude3, longitude3], { draggable: false}).addTo(map);
-			var endMarker3 = L.marker([latitude4, longitude4], { draggable: false}).addTo(map);
+			var latitude4 = @ViewBag.MyList3[2].Latitude;
+			var longitude4 = @ViewBag.MyList3[2].Longitude;
+			var startMarker3 = L.marker([latitude3, longitude3], { draggable: false,title: '@ViewBag.MyList3[1].PitStopName'}).addTo(map);
+			var endMarker3 = L.marker([latitude4, longitude4], { draggable: false, title : '@ViewBag.MyList3[2].PitStopName'}).addTo(map);
 
 			function routeImpl(){
 			L.tileLayer( 'http://{s}.tile.osm.org/{z}/{x}/{y}{r}.png', {
@@ -346,22 +306,19 @@
 
 			routeControl.on('routesfound', function(e) {
 			var routes = e.routes;
-			var distance = routes[0].summary.totalDistance;
-			$('#distanceBox').val(distance/1000);
+			var distance = routes[0].summary.totalDistance;			
 			coordArr = routes[0].coordinates.slice();
 			});
 
 			routeControl2.on('routesfound', function(e) {
 			var routes = e.routes;
-			var distance = routes[0].summary.totalDistance;
-			$('#distanceBox').val(distance/1000);
+			var distance = routes[0].summary.totalDistance;			
 			coordArr2 = routes[0].coordinates.slice();
 			});
 
 			routeControl3.on('routesfound', function(e) {
 			var routes = e.routes;
-			var distance = routes[0].summary.totalDistance;
-			$('#distanceBox').val(distance/1000);
+			var distance = routes[0].summary.totalDistance;			
 			coordArr3 = routes[0].coordinates.slice();
 			});
 			setTimeout(displaceMarker, 2000);
@@ -382,7 +339,7 @@
 					console.log('i =',i);
 					console.log('Random Number', Math.random());
 					if ( 0 == finish ){
-						setTimeout(displaceMarker, Math.random()*2500);
+						setTimeout(displaceMarker, Math.random()*1500);
 					}
 					else{
 						raceFinish;
@@ -392,7 +349,7 @@
 					startMarker.setLatLng(L.latLng(latitude2, longitude2));
 					startMarker.addTo(map);
 					console.log('coordArr2.length',coordArr2.length);
-					setTimeout(displaceMarker2, 500);
+                    setTimeout(displaceMarker2, Math.random()*1500);
 				}
 			}
 
@@ -409,7 +366,7 @@
 					console.log('iTeam1Displace2 =',iTeam1Displace2);
 					console.log('Random Number', Math.random());
 					if ( 0 == finish ){
-						setTimeout(displaceMarker2, 1500);
+                        setTimeout(displaceMarker2, Math.random()*1500);
 					}
 					else{
 						raceFinish;
@@ -419,7 +376,7 @@
 					startMarker.setLatLng(L.latLng(latitude3, longitude3));
 					startMarker.addTo(map);
 					console.log('coordArr3.length',coordArr3.length);
-					setTimeout(displaceMarker3, 500);
+                    setTimeout(displaceMarker3, Math.random()*1500);
 				}
 
 			}
@@ -436,7 +393,7 @@
                     ++iTeam1Displace3;
                     ++moveCounterTeam1;
 					if ( 0 == finish ){
-						setTimeout(displaceMarker3, 400);
+                        setTimeout(displaceMarker3, Math.random() * 1500);
 					}
 					else{
 						raceFinish;
