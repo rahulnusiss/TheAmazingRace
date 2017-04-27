@@ -23,6 +23,8 @@ namespace ACETreasureHunt.Controllers
         // GET: Staff/Create
         public ActionResult Create()
         {
+            IEnumerable<Event> List = unitOfWork.Events.GetAll();
+            ViewBag.EventID = new SelectList(List, "Id", "Name");
             Staff staff = new Staff();
             return View(staff);
         }
@@ -57,6 +59,8 @@ namespace ACETreasureHunt.Controllers
         // GET: Staff/Edit/5
         public ActionResult Edit(Staff aceStaff)
         {
+            IEnumerable<Event> List = unitOfWork.Events.GetAll();
+            ViewBag.EventID = new SelectList(List, "Id", "Name");
             Staff EventStaff = unitOfWork.Staffs.Get(aceStaff.Id);
             return View(EventStaff);
         }
