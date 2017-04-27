@@ -1,4 +1,12 @@
-﻿@model ACETreasureHunt.Models.Staff
+﻿<style>
+    .form-horizontal .control-label {
+        margin-right: 62px;
+    }
+    .btn3d {
+        margin-left: 40px;
+    }
+</style>
+@model ACETreasureHunt.Models.Staff
 
 @{
     ViewBag.Title = "Create";
@@ -75,10 +83,10 @@
 
     <div class="col-xs-12 col-md-12 col-lg-6">
         <h4 class="white">Location</h4>
-    <div id="map" data-mode="" style=" height: 300px; width: 500px;left:5%;">
+    <div id="map" data-mode="" style=" height: 300px; width: 100%;overflow:auto;">
         <input type="hidden" data-map-markers="" value="" name="map-geojson-data" />
     </div>
-    <div style="margin-left:50px">
+    <div>
         <input id="btnGetLocation" class="btn btn-primary btn-lg btn3d" type="button" value="Save Location" />
     </div>
         </div>
