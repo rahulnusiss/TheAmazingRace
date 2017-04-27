@@ -146,6 +146,11 @@
     <form id="mapFormId">
         Distance :
         <input id="distanceBox" type="text" name="Fname">
+        <div>
+            <label>1 </label><input id="rank1" type="text" name="Fname">
+            <label>2 </label><input id="rank2" type="text" name="Fname">
+            <label>3 </label><input id="rank3" type="text" name="Fname">
+        </div>
     </form>
     <div id="map" class="map"></div>
     <script>
@@ -192,7 +197,7 @@
 			var marker2 = L.marker(point2,{icon : iconPoint2}).addTo(map);
 			var marker3 = L.marker(point3,{icon : iconPoint3}).addTo(map);
 
-			<!-- Routing -- >
+			<!-- Routing -->
 			var i = 0;
 			var iTeam1Displace2 = 0;
 			var iTeam1Displace3 = 0;
@@ -204,7 +209,59 @@
 			var kTeam3Displace3 = 0;
 			var finish = 0;
 			var routeControl = null;
-			var coordArr = {} ;
+            var coordArr = {};
+
+            var moveCounterTeam1 = 0;
+            var moveCounterTeam2 = 0;
+            var moveCounterTeam3 = 0;
+
+            var updateRankings = function () {
+                   if (moveCounterTeam1 > moveCounterTeam2 && moveCounterTeam1 > moveCounterTeam3)
+                    {
+                        //Team 1 first
+                       $('#rank1').val("Team1");
+                        if (moveCounterTeam2 > moveCounterTeam3) {
+                            // Team 2 second, Team 3 third
+                            $('#rank2').val("Team2");
+                            $('#rank3').val("Team3");
+                        }
+                        else {
+                            // Team 3 second, Team 2 third
+                            $('#rank2').val("Team3");
+                            $('#rank3').val("Team2");
+                        }
+                        
+                    }
+                   if (moveCounterTeam2 > moveCounterTeam1 && moveCounterTeam2 > moveCounterTeam3){
+                        // Team 2 first
+                       $('#rank1').val("Team2");
+                       if (moveCounterTeam3 > moveCounterTeam1) {
+                           // Team 3 second, Team 1 third
+                           $('#rank2').val("Team3");
+                           $('#rank3').val("Team1");
+                       }
+                       else {
+                           // Team 1 second, Team 3 third
+                           $('#rank2').val("Team1");
+                           $('#rank3').val("Team3");
+                       }
+                    }
+                    else {
+                        // Team 3 first
+                       $('#rank1').val("Team3");
+                       if (moveCounterTeam1 > moveCounterTeam2) {
+                           // Team 1 second, Team 2 third
+                           $('#rank2').val("Team1");
+                           $('#rank3').val("Team2");
+                       }
+                       else {
+                           // Team 2 second, Team 1 third
+                           $('#rank2').val("Team2");
+                           $('#rank3').val("Team1");
+                       }
+                   }
+                   setTimeout(updateRankings, 3000);
+                }
 
 			<!-- 1st way  From 1 to 2-- >
 			var latitude1 = 1.3046014;
@@ -309,7 +366,8 @@
 			});
 			setTimeout(displaceMarker, 2000);
 			setTimeout(displaceMarkerTeam2, 2000);
-			setTimeout(displaceMarkerTeam3, 2000);
+            setTimeout(displaceMarkerTeam3, 2000);
+            setTimeout(updateRankings, 3000);
 			}
 
 			var displaceMarker = function(){
@@ -319,7 +377,8 @@
 					startMarker.setLatLng(newLatlng);
 					startMarker.addTo(map);
 					//e.waypoints[0].latLng
-					++i;
+                    ++i;
+                    ++moveCounterTeam1;
 					console.log('i =',i);
 					console.log('Random Number', Math.random());
 					if ( 0 == finish ){
@@ -345,7 +404,8 @@
 					startMarker.setLatLng(newLatlng);
 					startMarker.addTo(map);
 					//e.waypoints[0].latLng
-					iTeam1Displace2 = iTeam1Displace2 + 1;
+                    iTeam1Displace2 = iTeam1Displace2 + 1;
+                    ++moveCounterTeam1;
 					console.log('iTeam1Displace2 =',iTeam1Displace2);
 					console.log('Random Number', Math.random());
 					if ( 0 == finish ){
@@ -373,7 +433,8 @@
 					startMarker.setLatLng(newLatlng);
 					startMarker.addTo(map);
 					//e.waypoints[0].latLng
-					++iTeam1Displace3;
+                    ++iTeam1Displace3;
+                    ++moveCounterTeam1;
 					if ( 0 == finish ){
 						setTimeout(displaceMarker3, 400);
 					}
@@ -395,7 +456,8 @@
 					startMarkerTeam2.setLatLng(newLatlng);
 					startMarkerTeam2.addTo(map);
 					//e.waypoints[0].latLng
-					++jTeam2Displace1;
+                    ++jTeam2Displace1;
+                    ++moveCounterTeam2;
 					console.log('jTeam2Displace1 =',jTeam2Displace1);
 					if ( 0 == finish ){
 						setTimeout(displaceMarkerTeam2, Math.random()*1500);
@@ -419,7 +481,8 @@
 					startMarkerTeam2.setLatLng(newLatlng);
 					startMarkerTeam2.addTo(map);
 					//e.waypoints[0].latLng
-					++jTeam2Displace2;
+                    ++jTeam2Displace2;
+                    ++moveCounterTeam2;
 					console.log('Team2 displace 2 jTeam2Displace1 =',jTeam2Displace2);
 					if ( 0 == finish ){
 						setTimeout(displaceMarker2Team2, Math.random()*1500);
@@ -443,7 +506,8 @@
 					startMarkerTeam2.setLatLng(newLatlng);
 					startMarkerTeam2.addTo(map);
 					//e.waypoints[0].latLng
-					++jTeam2Displace3;
+                    ++jTeam2Displace3;
+                    ++moveCounterTeam2;
 					console.log('jTeam2Displace3 =',jTeam2Displace3);
 					if ( 0 == finish ){
 						setTimeout(displaceMarker3Team2, Math.random()*1500);
@@ -469,7 +533,8 @@
 					startMarkerTeam3.setLatLng(newLatlng);
 					startMarkerTeam3.addTo(map);
 					//e.waypoints[0].latLng
-					++kTeam3Displace1;
+                    ++kTeam3Displace1;
+                    ++moveCounterTeam3;
 					console.log('kTeam3Displace1 =',kTeam3Displace1);
 					if ( 0 == finish ){
 						setTimeout(displaceMarkerTeam3, Math.random()*1500);
@@ -493,7 +558,8 @@
 					startMarkerTeam3.setLatLng(newLatlng);
 					startMarkerTeam3.addTo(map);
 					//e.waypoints[0].latLng
-					++kTeam3Displace2;
+                    ++kTeam3Displace2;
+                    ++moveCounterTeam3;
 					console.log('Team2 displace 2 kTeam3Displace2 =',kTeam3Displace2);
 					if ( 0 == finish ){
 						setTimeout(displaceMarker2Team3, Math.random()*1500);
@@ -518,7 +584,8 @@
 					startMarkerTeam3.setLatLng(newLatlng);
 					startMarkerTeam3.addTo(map);
 					//e.waypoints[0].latLng
-					++jTeam2Displace3;
+                    ++jTeam2Displace3;
+                    ++moveCounterTeam3;
 					console.log('kTeam3Displace3 =',kTeam3Displace3);
 					if ( 0 == finish ){
 						setTimeout(displaceMarker3Team3, Math.random()*1500);
