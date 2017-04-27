@@ -1,63 +1,196 @@
-﻿<head>
-<link href="@Url.Content("~/Content/teamcreate.css")" rel="stylesheet" type="text/css" />
-</head>
+﻿<style>
+    .form-horizontal .control-label {
+        margin-right: 62px;
+    }
+
+    .btn3d {
+        margin-left: 40px;
+    }
+    .form-control {
+        width: 100%;
+    }
+</style>
 @model ACETreasureHunt.Models.Event
 
 @{
     ViewBag.Title = "Create";
-    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div class="container abc white">
-<h2>Event</h2>
 
-@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
-    
-    <div>
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+<div class="container abc">
+    <h2 class="white">Create</h2>
 
-        <div class="container" style="margin-top:-20px">
-        <div class="row centered-form">
-        <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
-        	<div class="panel panel-default">
-        		<div class="panel-heading">
-			    		<h3 class="panel-title">Create Event<small>..!</small></h3>
-			 			</div>
-			 			<div class="panel-body">
-			    		<form role="form">
-			    			<div class="form-group">
-                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", placeholder = "Event Name" } })
-                                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })		    			
-			    			</div>
-                            <div class="form-group">
-                                 @Html.EditorFor(model => model.StartDate, new { htmlAttributes = new { @class = "form-control", placeholder = "Start Date" } })
-                                 @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "text-danger" })	
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="row">
+            <div class="col-xs-12 col-md-12 col-lg-6">
+
+
+
+                <div class="form-horizontal">
+                    <h4 class="white">Event</h4>
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+
+
+                    <div class="row">
+                        <div style="margin-left:30px;margin-right:30px;">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Event Details<small>..!</small></h3>
+                                </div>
+                                <div class="panel-body">
+                                    <form role="form">
+                                        <div class="form-group">
+                                            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", placeholder = "Event Name" } })
+                                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.EditorFor(model => model.StartDate, new { htmlAttributes = new { @class = "form-control", placeholder = "Start Date" } })
+                                            @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "text-danger" })
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.EditorFor(model => model.StartLatitude, new { htmlAttributes = new { @class = "form-control", placeholder = "Start Latitude" } })
+                                            @Html.ValidationMessageFor(model => model.StartLatitude, "", new { @class = "text-danger" })
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.EditorFor(model => model.StartLongitude, new { htmlAttributes = new { @class = "form-control", placeholder = "Start Longitude" } })
+                                            @Html.ValidationMessageFor(model => model.StartLongitude, "", new { @class = "text-danger" })
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", placeholder = "Address" } })
+                                            @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                                        </div>
+
+                                        <input type="submit" value="Create" class="btn btn-info btn-block" />
+
+                                    </form>
+                                </div>
                             </div>
-			    			<div class="form-group">
-                                @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", placeholder = "Address" } })
-                                @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })			 
-			    			</div>
-                            
-			    			
-			    			<input type="submit" value="Create" class="btn btn-info btn-block" />
-			    		
-			    		</form>
-			    	</div>
-	    		</div>
-    		</div>
-    	</div>
-    </div>
-    </div>
-}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-12 col-lg-6">
+                <h4 class="white">Location</h4>
+                <div id="map" data-mode="" style=" height: 300px; width: 100%;overflow:auto;">
+                    <input type="hidden" data-map-markers="" value="" name="map-geojson-data" />
+                </div>
+                <div>
+                    <input id="btnGetLocation" class="btn btn-primary btn-lg btn3d" type="button" value="Save Pit-Stop" />
+                </div>
+            </div>
+        </div>
+    }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
 </div>
 
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            var osmUrl = 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
+                osmAttrib = '&copy; <a href="http://openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+                osm = L.tileLayer(osmUrl, {
+                    maxZoom: 18,
+                    attribution: osmAttrib
+                });
+
+
+            var map = L.map('map').setView([25.92, 79.84], 5).addLayer(osm);
+
+
+            map.on('click', onMapClick);
+
+
+            function onMapClick(e) {
+
+                var geojsonFeature = {
+                    "type": "Feature",
+                    "properties": {},
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [e.latlng.lat, e.latlng.lng]
+                    }
+                }
+
+                var marker;
+
+                L.geoJson(geojsonFeature, {
+
+                    pointToLayer: function (feature, latlng) {
+
+                        marker = L.marker(e.latlng, {
+
+                            title: "Resource Location",
+                            alt: "Resource Location",
+                            riseOnHover: true,
+                            draggable: true,
+
+                        }).bindPopup("<input type='button' value='Remove this' class='marker-delete-button'/>");
+
+                        marker.on("popupopen", onPopupOpen);
+
+                        return marker;
+                    }
+                }).addTo(map);
+            }
+
+            function onPopupOpen() {
+
+                var tempMarker = this;
+
+                //var tempMarkerGeoJSON = this.toGeoJSON();
+                //var lID = tempMarker._leaflet_id; // Getting Leaflet ID of this marker
+
+                $(".marker-delete-button:visible").click(function () {
+                    map.removeLayer(tempMarker);
+                });
+            }
+
+            function getAllMarkers() {
+
+                var allMarkersObjArray = [];
+                var allMarkersGeoJsonArray = [];
+
+                $.each(map._layers, function (ml) {
+                    //console.log(map._layers)
+                    if (map._layers[ml].feature) {
+
+                        allMarkersObjArray.push(this)
+                        allMarkersGeoJsonArray.push(JSON.stringify(this.toGeoJSON()))
+                    }
+                })
 
 
 
+                if (allMarkersGeoJsonArray.length == 0) {
+                    alert("Please select a PitStop Location on the Map");
+                } else if (allMarkersGeoJsonArray.length > 1) {
+                    alert("Please select single location for this PitStop");
+                } else {
+
+                    $('#StartLatitude').val(JSON.parse(allMarkersGeoJsonArray).geometry.coordinates[1].toFixed(4));
+                    $('#StartLongitude').val(JSON.parse(allMarkersGeoJsonArray).geometry.coordinates[0].toFixed(4));
+
+                }
+
+                  }
+
+            $("#btnGetLocation").on("click", getAllMarkers);
 
 
+        });
 
+
+    </script>
+}
+
+@*'pk.eyJ1IjoiZ3VydXByYWJhIiwiYSI6ImNqMXZtMnAwYTAwMGEyd3BlZDN6b2UyYXQifQ.TLQvP6CeBZLbEWrtmu7fIw'*@

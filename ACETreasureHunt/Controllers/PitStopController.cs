@@ -26,6 +26,8 @@ namespace ACETreasureHunt.Controllers
         // GET: PitStop/Create
         public ActionResult Create()
         {
+            IEnumerable<Event> List = unitOfWork.Events.GetAll();
+            ViewBag.EventID = new SelectList(List, "Id", "Name");
             PitStop pitstop = new PitStop();
             return View(pitstop);
         }
@@ -60,6 +62,8 @@ namespace ACETreasureHunt.Controllers
         // GET: PitStop/Edit/5
         public ActionResult Edit(PitStop acePitStop)
         {
+            IEnumerable<Event> List = unitOfWork.Events.GetAll();
+            ViewBag.EventID = new SelectList(List, "Id", "Name");
             PitStop EventPitStop = unitOfWork.PitStops.Get(acePitStop.Id);
             return View(EventPitStop);
         }

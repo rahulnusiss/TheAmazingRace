@@ -20,6 +20,14 @@ namespace ACETreasureHunt.Models
         [Display(Name = "Start Date")]
         public DateTime StartDate { get; set; }
 
+        [Required]
+        [Range(-90.000, 90.0000)]
+        public double StartLatitude { get; set; }
+
+        [Required]
+        [Range(-180.000, 180.0000)]
+        public double StartLongitude { get; set; }
+
         public string Address { get; set; }
 
        
