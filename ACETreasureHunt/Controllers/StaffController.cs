@@ -20,6 +20,12 @@ namespace ACETreasureHunt.Controllers
             return View(GameStaffs);
         }
 
+        // GET: PitStops/Details/5
+        public ActionResult Details(Staff aceStaff)
+        {
+            Staff EventStaff = unitOfWork.Staffs.Get(aceStaff.Id);
+            return View(EventStaff);
+        }
 
         // GET: Staff/Create
         [Authorize]
