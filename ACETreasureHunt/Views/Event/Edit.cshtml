@@ -1,20 +1,31 @@
-﻿<style>
-    .form-horizontal .control-label {
-        margin-right: 62px;
-    }
+﻿
+<head>
+    <link href="@Url.Content("~/Content/threedetails.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/home.css")" rel="stylesheet" type="text/css" />
 
-    .btn3d {
-        margin-left: 40px;
-    }
-     .form-control {
-        width: 100%;
-    }
-    .form-group {
-        margin-bottom: 15px;
-        align-content: center;
-        text-align: -webkit-center;
-    }
-</style>
+    <style>
+        .form-horizontal .control-label {
+            margin-right: 62px;
+        }
+
+        .btn3d {
+            margin-left: 40px;
+        }
+
+        .form-control {
+            width: 100%;
+        }
+        .jumbotron {
+            background-color: rgba(238, 238, 238, 0.47);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            align-content: center;
+            text-align: -webkit-center;
+        }
+    </style>
+</head>
 @model ACETreasureHunt.Models.Event
 
 @{
@@ -39,7 +50,7 @@
                         <div style="margin-left:30px;margin-right:30px;">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <h3 class="panel-title">PitStop Details<small>..!</small></h3>
+                                    <h3 class="panel-title">Event Details<small>..!</small></h3>
                                 </div>
                                 <div class="panel-body">
                                     <form role="form">
@@ -80,7 +91,7 @@
                     <input type="hidden" data-map-markers="" value="" name="map-geojson-data" />
                 </div>
                 <div style="text-align: -webkit-center;">
-                    <input id="btnGetLocation" class="btn btn-primary btn-lg btn3d" type="button" value="Save Pit-Stop" />
+                    <input id="btnGetLocation" class="btn btn-primary btn-lg btn3d" type="button" value="Save Location" />
                 </div>
             </div>
         </div>
