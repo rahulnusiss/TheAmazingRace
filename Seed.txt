@@ -1,39 +1,16 @@
-namespace ACETreasureHunt.Migrations
-{
-    using System;
-    using System.Data.Entity;
-    using System.Data.Entity.Migrations;
-    using System.Linq;
-    using ACETreasureHunt.Models;
-
-    internal sealed class Configuration : DbMigrationsConfiguration<ACETreasureHunt.DAL.ACEContext>
-    {
-        public Configuration()
-        {
-            AutomaticMigrationsEnabled = false;
-        }
-
-        protected override void Seed(ACETreasureHunt.DAL.ACEContext context)
+protected override void Seed(ACETreasureHunt.DAL.ACEContext context)
         {
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data. E.g.
             //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
-
             context.Events.AddOrUpdate(
-             p => p.Id,
-             new Event { Name = "BhaagMilkha", Address = "Take it or not", StartDate = new DateTime(2017, 2, 2), Id = 1, StartLatitude = 1.3046014, StartLongitude = 103.7701238 },
-             new Event { Name = "SherlockHolmes", Address = "Take it or not", StartDate = new DateTime(2017, 3, 3), Id = 2, StartLatitude = 1.3046014, StartLongitude = 103.8701238 },
-             new Event { Name = "NUSTreasureHunt", Address = "Take it or not", StartDate = new DateTime(2017, 4, 5), Id = 3, StartLatitude = 1.2946014, StartLongitude = 103.7701238 }
-           );
+              p => p.Id,
+              new Event { Name = "BhaagMilkha", Address = "Take it or not", StartDate = new DateTime(2017, 2, 2), Id = 1 },
+              new Event { Name = "SherlockHolmes", Address = "Take it or not", StartDate = new DateTime(2017, 3, 3), Id = 2 },
+              new Event { Name = "NUSTreasureHunt", Address = "Take it or not", StartDate = new DateTime(2017, 4, 5), Id = 3 }
+            );
 
             context.Staffs.AddOrUpdate(
             p => p.Id,
@@ -63,7 +40,7 @@ namespace ACETreasureHunt.Migrations
 
             context.PitStops.AddOrUpdate(
               p => p.Id,
-              new PitStop { PitStopName = "Raffles Place", PitStopNumber = 1, Latitude = 1.2838627, Longitude = 103.8493554, Description = "WAH", EventID = 1, Id = 1 },
+              new PitStop { PitStopName="Raffles Place", PitStopNumber=1,Latitude= 1.2838627, Longitude= 103.8493554,Description="WAH", EventID = 1, Id = 1 },
               new PitStop { PitStopName = "Bugis", PitStopNumber = 2, Latitude = 1.300599, Longitude = 103.8527043, Description = "DDD", EventID = 1, Id = 2 },
               new PitStop { PitStopName = "Lavendar", PitStopNumber = 3, Latitude = 1.3075337, Longitude = 103.8609886, Description = "WAH", EventID = 1, Id = 3 },
               new PitStop { PitStopName = "chinatown", PitStopNumber = 1, Latitude = 1.2850, Longitude = 103.8440, Description = "WAH", EventID = 2, Id = 4 },
@@ -75,5 +52,18 @@ namespace ACETreasureHunt.Migrations
               );
 
         }
-    }
-}
+
+        chinatown - 1.2850, 103.8440
+        Clarke-Quay - 1.2889, 103.8472
+        Dhoby Ghaut - 1.2988, 103.8452
+        Orchard - 1.3031, 103.8322
+        UTown - 1.3046014, 103.7701238
+        Raffles Place - 1.2838627, 103.8493554
+        Bugis - 1.300599, 103.8527043
+        Lavendar - 1.3075337, 103.8609886
+
+
+        staff1 = 1.3320, 103.8991
+        staff2= 1.3296, 103.8980
+
+        staff3= 1.3164, 103.8828

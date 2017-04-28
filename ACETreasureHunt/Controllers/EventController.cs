@@ -56,9 +56,24 @@ namespace ACETreasureHunt.Controllers
 
             ViewBag.MyList = ThisEventTeams;
             ViewBag.MyList2 = ThisEventStaffs;
+            ViewBag.StaffSize = ThisEventStaffs.Count;
             ViewBag.MyList3 = ThisEventPitStops;
             ViewBag.EventLat = aceEvent.StartLatitude;
             ViewBag.EventLong = aceEvent.StartLongitude;
+
+            List<double> StaffLatList = new List<double>();
+            List<double> StaffLongList = new List<double>();            
+            for (int i = 0; i < ThisEventStaffs.Count; ++i) {
+                
+                StaffLatList.Add(ThisEventStaffs[i].Latitude);
+                StaffLongList.Add(ThisEventStaffs[i].Longitude);
+            }
+            ViewBag.Staff1 = ThisEventStaffs[0].Name;
+            ViewBag.Staff2 = ThisEventStaffs[1].Name;
+            ViewBag.Staff3 = ThisEventStaffs[2].Name;
+
+            ViewBag.StaffLatitudeList = StaffLatList;
+            ViewBag.StaffLongitudeList = StaffLongList;
 
             return View(ThisEventTeams);
         }

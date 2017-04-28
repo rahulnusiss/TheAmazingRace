@@ -7,7 +7,7 @@
 <html>
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />    
     <title>
         Event Details
     </title>
@@ -176,6 +176,11 @@
 			var routeControl = null;
             var coordArr = {};
 
+        //Show staffs
+            var staffMarker1 = L.marker([@ViewBag.StaffLatitudeList[0], @ViewBag.StaffLongitudeList[0]], { draggable: false, title: '@ViewBag.Staff1' }).addTo(map);
+            var staffMarker2 = L.marker([@ViewBag.StaffLatitudeList[1], @ViewBag.StaffLongitudeList[1]], { draggable: false, title: '@ViewBag.Staff2' }).addTo(map);
+            var staffMarker3 = L.marker([@ViewBag.StaffLatitudeList[2], @ViewBag.StaffLongitudeList[2]], { draggable: false, title: '@ViewBag.Staff3' }).addTo(map);
+
             var moveCounterTeam1 = 0;
             var moveCounterTeam2 = 0;
             var moveCounterTeam3 = 0;
@@ -329,7 +334,7 @@
 			setTimeout(displaceMarker, 2000);
 			setTimeout(displaceMarkerTeam2, 2000);
             setTimeout(displaceMarkerTeam3, 2000);
-            setTimeout(updateRankings, 3000);
+            setTimeout(updateRankings, 1000);
 			}
 
 			var displaceMarker = function(){
