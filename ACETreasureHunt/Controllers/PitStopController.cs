@@ -24,6 +24,13 @@ namespace ACETreasureHunt.Controllers
             return View(EventPitStops);
         }
 
+        // GET: PitStops/Details/5
+        public ActionResult Details(PitStop acePitStop)
+        {
+            PitStop EventPitStop = unitOfWork.PitStops.Get(acePitStop.Id);
+            return View(EventPitStop);
+        }
+
         // GET: PitStop/Create
         [Authorize]
         public ActionResult Create()
@@ -41,9 +48,9 @@ namespace ACETreasureHunt.Controllers
         {
             try
             {
-                unitOfWork.PitStops.Add(pitstop);
-                unitOfWork.Complete();
-                return RedirectToAction("Index");
+                    unitOfWork.PitStops.Add(pitstop);
+                    unitOfWork.Complete();
+                    return RedirectToAction("Index");
             }
             catch (Exception e)
             {
