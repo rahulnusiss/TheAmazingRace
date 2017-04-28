@@ -18,7 +18,16 @@ namespace ACETreasureHunt.Models
 
         [DataType(DataType.Date)]
         [Display(Name = "Start Date")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime StartDate { get; set; }
+
+        [Required]
+        [Range(-90.000, 90.0000)]
+        public double StartLatitude { get; set; }
+
+        [Required]
+        [Range(-180.000, 180.0000)]
+        public double StartLongitude { get; set; }
 
         public string Address { get; set; }
 

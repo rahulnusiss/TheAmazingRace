@@ -8,19 +8,34 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Untitled Document</title>
 <link href="@Url.Content("~/Content/home.css")" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("~/Content/worldmap.css")" rel="stylesheet" type="text/css" />
 <link href="@Url.Content("~/Content/flipflop.css")" rel="stylesheet" type="text/css" />
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="js/main.js"></script>
 </head>
+<script>
+        $(document).ready(function () {
 
+            setTimeout(function () {
+                $('body').addClass('loaded');
+            }, 3000);
+
+        });
+</script>
 <body>
+    <div id="loader-wrapper">
+            <div id="loader"></div>
+            <div class="loader-section section-left"></div>
+            <div class="loader-section section-right"></div>
+        </div>
+     
 <div class="container">
-<video autoplay loop id="video-background" muted>
-  <source src="http://mazwai.com/system/posts/videos/000/000/109/webm/leif_eliasson--glaciartopp.webm?1410742112" type="video/mp4">
-</video>
     <div class="row" style="margin-left: 65px;margin-top: 75px;">
         
      		<div class="col-lg-6 col-md-6 col-sm-12">
-            <h1 style="font-size: 70px;">"<b>ACE</b>"</h1>
-            <h3 style="font-size: 50px; color:aliceblue; left: 10%;">RACE TO WIN</h3>
+            <h1 class="fade-in" style="font-size: 70px;">"<b>ACE</b>"</h1>
+            <h3 class="fade-in" style="font-size: 50px; color:aliceblue; left: 10%;">RACE TO WIN</h3>
             </div>
 
             <div class="col-lg-6 col-md-6 col-sm-12">
@@ -68,6 +83,17 @@
     </div>
   </div>
 </div>
+
+  
+
+
+
+
+
+
+
+
+
 
 </body>
 </html>
