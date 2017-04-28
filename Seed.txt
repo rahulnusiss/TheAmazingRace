@@ -7,9 +7,9 @@ protected override void Seed(ACETreasureHunt.DAL.ACEContext context)
             //
             context.Events.AddOrUpdate(
               p => p.Id,
-              new Event { Name = "BhaagMilkha", Address = "Take it or not", StartDate = new DateTime(2017, 2, 2), Id = 1 },
-              new Event { Name = "SherlockHolmes", Address = "Take it or not", StartDate = new DateTime(2017, 3, 3), Id = 2 },
-              new Event { Name = "NUSTreasureHunt", Address = "Take it or not", StartDate = new DateTime(2017, 4, 5), Id = 3 }
+              new Event { Name = "BhaagMilkha", Address = "Take it or not", StartDate = new DateTime(2017, 2, 2), Id = 1, StartLatitude = 1.3046014, StartLongitude = 103.7701238 },
+             new Event { Name = "SherlockHolmes", Address = "Take it or not", StartDate = new DateTime(2017, 3, 3), Id = 2, StartLatitude = 1.3046014, StartLongitude = 103.8701238 },
+             new Event { Name = "NUSTreasureHunt", Address = "Take it or not", StartDate = new DateTime(2017, 4, 5), Id = 3, StartLatitude = 1.2946014, StartLongitude = 103.7701238 }
             );
 
             context.Staffs.AddOrUpdate(
