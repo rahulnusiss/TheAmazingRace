@@ -150,30 +150,19 @@
 
     <div class="container well">
         <div style="margin-left:20%;overflow:auto;">
-        <div class="jung"><h1>2 nd</h1><span>place</span><input id="rank2" type="text" name="Fname"></div>
-         <div class="jill"><h1>1 st</h1><span>place</span><input id="rank1" type="text" name="Fname"></div>
-         <div class="juck"><h1>3 rd</h1><span>place</span><input id="rank3" type="text" name="Fname"></div>
+        <div class="jung"><h1>2 nd</h1><span>place</span><input id="rank2" type="text" name="Fname" class="btn btn-primary"></div>
+         <div class="jill"><h1>1 st</h1><span>place</span><input id="rank1" type="text" name="Fname" class="btn btn-primary"></div>
+         <div class="juck"><h1>3 rd</h1><span>place</span><input id="rank3" type="text" name="Fname" class="btn btn-primary"></div>
         </div>
-        </div>
-
-
-
-
-
-
-
-
-
-
-    
+    </div>    
     <div id="map" class="map"></div>
     </div>
     <script>
 			<!-- Add countries in map -->
 			var map = L.map('map').setView([1.3046014, 103.7701238], 6);
-			//var countriesLayer = L.geoJson(countries).addTo(map);		
+			//var countriesLayer = L.geoJson(countries).addTo(map);
 
-			<!-- Routing -->
+			//<!-- Routing -->
 			var i = 0;
 			var iTeam1Displace2 = 0;
 			var iTeam1Displace3 = 0;
@@ -192,19 +181,18 @@
             var moveCounterTeam3 = 0;
 
             var updateRankings = function () {
-                   if (moveCounterTeam1 > moveCounterTeam2 && moveCounterTeam1 > moveCounterTeam3)
-                    {
-                        //Team 1 first
-                       $('#rank1').val("@ViewBag.MyList[0].Name");
-                        if (moveCounterTeam2 > moveCounterTeam3) {
-                            // Team 2 second, Team 3 third
-                            $('#rank2').val("@ViewBag.MyList[1].Name");
-                            $('#rank3').val("@ViewBag.MyList[2].Name");
+                if (moveCounterTeam1 > moveCounterTeam2 && moveCounterTeam1 > moveCounterTeam3) {
+                    //Team 1 first
+                    $('#rank1').val("@ViewBag.MyList[0].Name");
+                    if (moveCounterTeam2 > moveCounterTeam3) {
+                        // Team 2 second, Team 3 third
+                        $('#rank2').val("@ViewBag.MyList[1].Name");
+                        $('#rank3').val("@ViewBag.MyList[2].Name");
                         }
                         else {
-                            // Team 3 second, Team 2 third
-                            $('#rank2').val("@ViewBag.MyList[2].Name");
-                            $('#rank3').val("@ViewBag.MyList[1].Name");
+                        // Team 3 second, Team 2 third
+                        $('#rank2').val("@ViewBag.MyList[2].Name");
+                        $('#rank3').val("@ViewBag.MyList[1].Name");
                         }
 
                     }
@@ -239,17 +227,17 @@
                    setTimeout(updateRankings, 1000);
                 }
 
-			<!-- 1st way  From 1 to 2-- >
-			var latitude1 = 1.3046014;
-			var longitude1 = 103.7701238;
+			//<!-- 1st way  From 1 to 2-- >
+			var latitude1 = @ViewBag.EventLat;
+            var longitude1 = @ViewBag.EventLong;
 			var latitude2 = @ViewBag.MyList3[0].Latitude;
-			var longitude2 = @ViewBag.MyList3[0].Longitude;
-            var startMarker = L.marker([latitude1, longitude1], { draggable: false, title: '@ViewBag.MyList[0].Name' }).addTo(map);
+            var longitude2 = @ViewBag.MyList3[0].Longitude;
+            var startMarker = L.marker([latitude1, longitude1], { draggable: false, title: '@ViewBag.MyList[0].Name' }).bindPopup("@ViewBag.MyList[0].Name").openPopup().addTo(map);
             var eventStartMarker = L.marker([latitude1, longitude1], { draggable: false, title: 'EventStartPoint' }).addTo(map);
             var endMarker = L.marker([latitude2, longitude2], { draggable: false, title: '@ViewBag.MyList3[0].PitStopName' }).addTo(map);
 
-			var startMarkerTeam2 = L.marker([latitude1, longitude1], { draggable: false, title: '@ViewBag.MyList[1].Name'}).addTo(map);
-			var startMarkerTeam3 = L.marker([latitude1, longitude1], { draggable: false, title: '@ViewBag.MyList[2].Name'}).addTo(map);
+            var startMarkerTeam2 = L.marker([latitude1, longitude1], { draggable: false, title: '@ViewBag.MyList[1].Name' }).bindPopup("@ViewBag.MyList[1].Name").openPopup().addTo(map);
+            var startMarkerTeam3 = L.marker([latitude1, longitude1], { draggable: false, title: '@ViewBag.MyList[2].Name' }).bindPopup("@ViewBag.MyList[2].Name").openPopup().addTo(map);
 
 			<!-- 2nd way, From 2 to 3 -- >
 			var routeControl2 = null;
@@ -323,19 +311,19 @@
 
 			routeControl.on('routesfound', function(e) {
 			var routes = e.routes;
-			var distance = routes[0].summary.totalDistance;			
+			var distance = routes[0].summary.totalDistance;
 			coordArr = routes[0].coordinates.slice();
 			});
 
 			routeControl2.on('routesfound', function(e) {
 			var routes = e.routes;
-			var distance = routes[0].summary.totalDistance;			
+			var distance = routes[0].summary.totalDistance;
 			coordArr2 = routes[0].coordinates.slice();
 			});
 
 			routeControl3.on('routesfound', function(e) {
 			var routes = e.routes;
-			var distance = routes[0].summary.totalDistance;			
+			var distance = routes[0].summary.totalDistance;
 			coordArr3 = routes[0].coordinates.slice();
 			});
 			setTimeout(displaceMarker, 2000);

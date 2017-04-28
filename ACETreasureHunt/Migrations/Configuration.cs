@@ -20,12 +20,20 @@ namespace ACETreasureHunt.Migrations
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data. E.g.
             //
+            //    context.People.AddOrUpdate(
+            //      p => p.FullName,
+            //      new Person { FullName = "Andrew Peters" },
+            //      new Person { FullName = "Brice Lambson" },
+            //      new Person { FullName = "Rowan Miller" }
+            //    );
+            //
+
             context.Events.AddOrUpdate(
-              p => p.Id,
-              new Event { Name = "BhaagMilkha", Address = "Take it or not", StartDate = new DateTime(2017, 2, 2), Id = 1 },
-              new Event { Name = "SherlockHolmes", Address = "Take it or not", StartDate = new DateTime(2017, 3, 3), Id = 2 },
-              new Event { Name = "NUSTreasureHunt", Address = "Take it or not", StartDate = new DateTime(2017, 4, 5), Id = 3 }
-            );
+             p => p.Id,
+             new Event { Name = "BhaagMilkha", Address = "Take it or not", StartDate = new DateTime(2017, 2, 2), Id = 1, StartLatitude = 1.3046014, StartLongitude = 103.7701238 },
+             new Event { Name = "SherlockHolmes", Address = "Take it or not", StartDate = new DateTime(2017, 3, 3), Id = 2, StartLatitude = 1.3046014, StartLongitude = 103.8701238 },
+             new Event { Name = "NUSTreasureHunt", Address = "Take it or not", StartDate = new DateTime(2017, 4, 5), Id = 3, StartLatitude = 1.2946014, StartLongitude = 103.7701238 }
+           );
 
             context.Teams.AddOrUpdate(
               p => p.Id,
@@ -42,7 +50,7 @@ namespace ACETreasureHunt.Migrations
 
             context.PitStops.AddOrUpdate(
               p => p.Id,
-              new PitStop { PitStopName="RAFflesPlace", PitStopNumber=1,Latitude= 1.2838627, Longitude= 103.8493554,Description="WAH", EventID = 1, Id = 1 },
+              new PitStop { PitStopName = "Raffles Place", PitStopNumber = 1, Latitude = 1.2838627, Longitude = 103.8493554, Description = "WAH", EventID = 1, Id = 1 },
               new PitStop { PitStopName = "Bugis", PitStopNumber = 2, Latitude = 1.300599, Longitude = 103.8527043, Description = "DDD", EventID = 1, Id = 2 },
               new PitStop { PitStopName = "Lavendar", PitStopNumber = 3, Latitude = 1.3075337, Longitude = 103.8609886, Description = "WAH", EventID = 1, Id = 3 },
               new PitStop { PitStopName = "chinatown", PitStopNumber = 1, Latitude = 1.2850, Longitude = 103.8440, Description = "WAH", EventID = 2, Id = 4 },

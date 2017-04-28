@@ -1,20 +1,28 @@
-﻿<style>
-    .form-horizontal .control-label {
-        margin-right: 62px;
-    }
+﻿
+<head>
+    <link href="@Url.Content("~/Content/home.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/threedetails.css")" rel="stylesheet" type="text/css" />
 
-    .btn3d {
-        margin-left: 40px;
-    }
-     .form-control {
-        width: 100%;
-    }
-    .form-group {
-        margin-bottom: 15px;
-        align-content: center;
-        text-align: -webkit-center;
-    }
-</style>
+    <style>
+        .form-horizontal .control-label {
+            margin-right: 62px;
+        }
+
+        .btn3d {
+            margin-left: 40px;
+        }
+
+        .form-control {
+            width: 100%;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            align-content: center;
+            text-align: -webkit-center;
+        }
+    </style>
+</head>
 @model ACETreasureHunt.Models.Event
 
 @{
@@ -39,7 +47,7 @@
                         <div style="margin-left:30px;margin-right:30px;">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <h3 class="panel-title">PitStop Details<small>..!</small></h3>
+                                    <h3 class="panel-title">Event Details<small>..!</small></h3>
                                 </div>
                                 <div class="panel-body">
                                     <form role="form">
@@ -80,9 +88,64 @@
                     <input type="hidden" data-map-markers="" value="" name="map-geojson-data" />
                 </div>
                 <div style="text-align: -webkit-center;">
-                    <input id="btnGetLocation" class="btn btn-primary btn-lg btn3d" type="button" value="Save Pit-Stop" />
+                    <input id="btnGetLocation" class="btn btn-primary btn-lg btn3d" type="button" value="Set Location" />
                 </div>
             </div>
+        </div>
+
+
+
+
+
+
+
+        <div class="jumbotron">
+            <div class="pricing-table pricing-three-column row">
+                <div class="plan col-sm-4 col-lg-4">
+                    <div class="plan-name-bronze">
+                        <h3>Teams</h3>
+                        <img class="ack" src="http://software.improve1.com/content/itpvt-team3.jpg" alt="myImagetitle" />
+                    </div>
+                    <ul>
+                        @foreach (var team in ViewBag.MyList)
+                {
+                            <li class="plan-feature">@team.Name</li>
+                        }
+
+                        <li class="plan-feature"><a href="#" class="btn btn-primary btn-plan-select" onclick="location.href='@Url.Action("Index", "Team")'"><i class="icon-white icon-ok"></i>Manage</a></li>
+                    </ul>
+                </div>
+
+
+                <div style="z-index:55;" class="plan col-sm-4 col-lg-4">
+                    <div class="plan-name-silver">
+                        <h3>Staffs</h3>
+                        <img class="ack" src="http://www.affordablesantafedentist.com/wp-content/uploads/2012/08/118251024.jpg" alt="myImagetitle" />
+                    </div>
+                    <ul>
+                        @foreach (var event2 in ViewBag.MyList2)
+                {
+                            <li class="plan-feature">@event2.Name</li>
+                        }
+
+                        <li class="plan-feature"><a href="#" class="btn btn-primary btn-plan-select" onclick="location.href='@Url.Action("Index", "Staff")'"><i class="icon-white icon-ok"></i>Manage</a></li>
+                    </ul>
+                </div>
+                <div class="plan col-sm-4 col-lg-4">
+                    <div class="plan-name-gold">
+                        <h3>PitStop</h3>
+                        <img class="ack" src="http://www.clipartkid.com/images/643/mail-the-author-at-mom-about-town-dvo-gmail-com-visit-www-PyeKRm-clipart.png" alt="myImagetitle" />
+                    </div>
+                    <ul>
+                        @foreach (var event3 in ViewBag.MyList3)
+                {
+                            <li class="plan-feature">@event3.PitStopName</li>
+                        }
+                        <li class="plan-feature"><a href="#" class="btn btn-primary btn-plan-select" onclick="location.href='@Url.Action("Index", "PitStop")'"><i class="icon-white icon-ok"></i>Manage</a></li>
+                    </ul>
+                </div>
+            </div>
+
         </div>
     }
     <div>
@@ -103,7 +166,7 @@
                 });
 
 
-            var map = L.map('map').setView([25.92, 79.84], 5).addLayer(osm);
+            var map = L.map('map').setView([1.29866, 103.7783], 12).addLayer(osm);
 
 
             map.on('click', onMapClick);

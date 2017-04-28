@@ -23,6 +23,7 @@ namespace ACETreasureHunt.Controllers
         // GET: Event/Details/5
         public ActionResult Details(Event aceEvent)
         {
+            
             IEnumerable<Team> Teams = unitOfWork.Teams.GetAll();
             List<Team> ThisEventTeams = new List<Team>();
             foreach (var item in Teams)
@@ -56,6 +57,8 @@ namespace ACETreasureHunt.Controllers
             ViewBag.MyList = ThisEventTeams;
             ViewBag.MyList2 = ThisEventStaffs;
             ViewBag.MyList3 = ThisEventPitStops;
+            ViewBag.EventLat = aceEvent.StartLatitude;
+            ViewBag.EventLong = aceEvent.StartLongitude;
 
             return View(ThisEventTeams);
         }
@@ -101,6 +104,41 @@ namespace ACETreasureHunt.Controllers
         public ActionResult Edit(Event aceEvent)
         {
             Event editEvent = unitOfWork.Events.Get(aceEvent.Id);
+            IEnumerable<Team> Teams = unitOfWork.Teams.GetAll();
+            List<Team> ThisEventTeams = new List<Team>();
+            foreach (var item in Teams)
+            {
+                if (aceEvent.Id == item.EventID)
+                {
+                    ThisEventTeams.Add(item);
+                }
+            }
+
+            IEnumerable<Staff> Staffs = unitOfWork.Staffs.GetAll();
+            List<Staff> ThisEventStaffs = new List<Staff>();
+            foreach (var item in Staffs)
+            {
+                if (aceEvent.Id == item.EventID)
+                {
+                    ThisEventStaffs.Add(item);
+                }
+            }
+
+            IEnumerable<PitStop> PitStops = unitOfWork.PitStops.GetAll();
+            List<PitStop> ThisEventPitStops = new List<PitStop>();
+            foreach (var item in PitStops)
+            {
+                if (aceEvent.Id == item.EventID)
+                {
+                    ThisEventPitStops.Add(item);
+                }
+            }
+
+            ViewBag.MyList = ThisEventTeams;
+            ViewBag.MyList2 = ThisEventStaffs;
+            ViewBag.MyList3 = ThisEventPitStops;
+            ViewBag.EventLat = aceEvent.StartLatitude;
+            ViewBag.EventLong = aceEvent.StartLongitude;
             return View(editEvent);
         }
 
