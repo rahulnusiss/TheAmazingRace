@@ -7,7 +7,7 @@
 <html>
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />    
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>
         Event Details
     </title>
@@ -112,8 +112,11 @@
                 {
                     <li class="plan-feature">@team.Name</li>
                 }
-
+                
+                @if (User.Identity.IsAuthenticated)
+                {
                 <li class="plan-feature"><a href="#" class="btn btn-primary btn-plan-select" onclick="location.href='@Url.Action("Index", "Team")'"><i class="icon-white icon-ok"></i>Manage</a></li>
+                }
             </ul>
         </div>
 
@@ -128,8 +131,11 @@
                 {
                     <li class="plan-feature">@event2.Name</li>
                 }
-
+                
+                @if (User.Identity.IsAuthenticated)
+                {
                 <li class="plan-feature"><a href="#" class="btn btn-primary btn-plan-select" onclick="location.href='@Url.Action("Index", "Staff")'"><i class="icon-white icon-ok"></i>Manage</a></li>
+                }
             </ul>
         </div>
         <div class="plan col-sm-4 col-lg-4">
@@ -142,7 +148,10 @@
                 {
                     <li class="plan-feature">@event3.PitStopName</li>
                 }
+                @if (User.Identity.IsAuthenticated)
+                {
                 <li class="plan-feature"><a href="#" class="btn btn-primary btn-plan-select" onclick="location.href='@Url.Action("Index", "PitStop")'"><i class="icon-white icon-ok"></i>Manage</a></li>
+                }
             </ul>
         </div>
     </div>
@@ -154,8 +163,21 @@
          <div class="jill"><h1>1 st</h1><span>place</span><input id="rank1" type="text" name="Fname" class="btn btn-primary"></div>
          <div class="juck"><h1>3 rd</h1><span>place</span><input id="rank3" type="text" name="Fname" class="btn btn-primary"></div>
         </div>
-    </div>    
+        </div>
+
+
+
+
+
+
+
+
+
+
+    @if (User.Identity.IsAuthenticated)
+    {
     <div id="map" class="map"></div>
+    }
     </div>
     <script>
 			<!-- Add countries in map -->

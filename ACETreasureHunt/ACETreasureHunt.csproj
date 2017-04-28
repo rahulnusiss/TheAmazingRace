@@ -323,6 +323,8 @@
     <Content Include="Views\PitStop\Create.cshtml" />
     <Content Include="Views\PitStop\Edit.cshtml" />
     <Content Include="Views\Event\Details.cshtml" />
+    <Content Include="Views\PitStop\Details.cshtml" />
+    <Content Include="Views\Staff\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
