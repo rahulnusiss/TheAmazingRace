@@ -60,8 +60,8 @@ namespace ACETreasureHunt.Controllers
         public ActionResult Edit(Staff aceStaff)
         {
             IEnumerable<Event> List = unitOfWork.Events.GetAll();
-            ViewBag.EventID = new SelectList(List, "Id", "Name");
             Staff EventStaff = unitOfWork.Staffs.Get(aceStaff.Id);
+            ViewBag.EventID = new SelectList(List, "Id", "Name", EventStaff.EventID);
             return View(EventStaff);
         }
 
