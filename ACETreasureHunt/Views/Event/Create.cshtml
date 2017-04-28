@@ -9,6 +9,11 @@
     .form-control {
         width: 100%;
     }
+    .form-group {
+        margin-bottom: 15px;
+        align-content: center;
+        text-align: -webkit-center;
+    }
 </style>
 @model ACETreasureHunt.Models.Event
 
@@ -65,7 +70,7 @@
                                             @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
                                         </div>
 
-                                        <input type="submit" value="Create" class="btn btn-info btn-block" />
+                                        <input type="submit" value="Create" class="btn btn-info btn-block" style="max-width: 100%;" />
 
                                     </form>
                                 </div>
@@ -79,7 +84,7 @@
                 <div id="map" data-mode="" style=" height: 300px; width: 100%;overflow:auto;">
                     <input type="hidden" data-map-markers="" value="" name="map-geojson-data" />
                 </div>
-                <div>
+                <div style="text-align: -webkit-center;">
                     <input id="btnGetLocation" class="btn btn-primary btn-lg btn3d" type="button" value="Save Pit-Stop" />
                 </div>
             </div>
