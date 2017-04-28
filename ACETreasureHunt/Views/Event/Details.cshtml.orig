@@ -7,7 +7,7 @@
 <html>
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />    
     <title>
         Event Details
     </title>
@@ -163,6 +163,9 @@
          <div class="jill"><h1>1 st</h1><span>place</span><input id="rank1" type="text" name="Fname" class="btn btn-primary"></div>
          <div class="juck"><h1>3 rd</h1><span>place</span><input id="rank3" type="text" name="Fname" class="btn btn-primary"></div>
         </div>
+<<<<<<< HEAD
+    </div>    
+=======
         </div>
 
 
@@ -176,6 +179,7 @@
 
     @if (User.Identity.IsAuthenticated)
     {
+>>>>>>> origin/Map_Issue
     <div id="map" class="map"></div>
     }
     </div>
@@ -194,9 +198,7 @@
 			var kTeam3Displace1 = 0;
 			var kTeam3Displace2 = 0;
 			var kTeam3Displace3 = 0;
-            var finish1 = 0;
-            var finish2 = 0;
-            var finish3 = 0;
+			var finish = 0;
 			var routeControl = null;
             var coordArr = {};
 
@@ -372,7 +374,7 @@
                     ++moveCounterTeam1;
 					console.log('i =',i);
 					console.log('Random Number', Math.random());
-					if ( 0 == finish1 ){
+					if ( 0 == finish ){
 						setTimeout(displaceMarker, Math.random()*1500);
 					}
 					else{
@@ -399,7 +401,7 @@
                     ++moveCounterTeam1;
 					console.log('iTeam1Displace2 =',iTeam1Displace2);
 					console.log('Random Number', Math.random());
-					if ( 0 == finish1 ){
+					if ( 0 == finish ){
                         setTimeout(displaceMarker2, Math.random()*1500);
 					}
 					else{
@@ -426,7 +428,7 @@
 					//e.waypoints[0].latLng
                     ++iTeam1Displace3;
                     ++moveCounterTeam1;
-					if ( 0 == finish1 ){
+					if ( 0 == finish ){
                         setTimeout(displaceMarker3, Math.random() * 1500);
 					}
 					else{
@@ -434,7 +436,7 @@
 					}
 				}
 				if( iTeam1Displace3 == (coordArr3.length-1) ){
-					finish1 = 1;
+					finish = 1;
 					console.log('Should Finish', finish);
 					throw new Error("Something went badly wrong!");
 				}
@@ -450,7 +452,7 @@
                     ++jTeam2Displace1;
                     ++moveCounterTeam2;
 					console.log('jTeam2Displace1 =',jTeam2Displace1);
-					if ( 0 == finish2 ){
+					if ( 0 == finish ){
 						setTimeout(displaceMarkerTeam2, Math.random()*1500);
 					}
 					else{
@@ -475,7 +477,7 @@
                     ++jTeam2Displace2;
                     ++moveCounterTeam2;
 					console.log('Team2 displace 2 jTeam2Displace1 =',jTeam2Displace2);
-					if ( 0 == finish2 ){
+					if ( 0 == finish ){
 						setTimeout(displaceMarker2Team2, Math.random()*1500);
 					}
 					else{
@@ -500,7 +502,7 @@
                     ++jTeam2Displace3;
                     ++moveCounterTeam2;
 					console.log('jTeam2Displace3 =',jTeam2Displace3);
-					if ( 0 == finish2 ){
+					if ( 0 == finish ){
 						setTimeout(displaceMarker3Team2, Math.random()*1500);
 					}
 					else{
@@ -508,7 +510,7 @@
 					}
 				}
 				if( jTeam2Displace3 == (coordArr3.length-1) ){
-					finish2 = 1;
+					finish = 1;
 					startMarkerTeam2.setLatLng(L.latLng(latitude4, longitude4));
 					startMarkerTeam2.addTo(map);
 					console.log('Team2 coordArr3.length jTeam2Displace1', coordArr3.length);
@@ -527,7 +529,7 @@
                     ++kTeam3Displace1;
                     ++moveCounterTeam3;
 					console.log('kTeam3Displace1 =',kTeam3Displace1);
-					if ( 0 == finish3 ){
+					if ( 0 == finish ){
 						setTimeout(displaceMarkerTeam3, Math.random()*1500);
 					}
 					else{
@@ -552,7 +554,7 @@
                     ++kTeam3Displace2;
                     ++moveCounterTeam3;
 					console.log('Team2 displace 2 kTeam3Displace2 =',kTeam3Displace2);
-					if ( 0 == finish3 ){
+					if ( 0 == finish ){
 						setTimeout(displaceMarker2Team3, Math.random()*1500);
 					}
 					else{
@@ -575,10 +577,10 @@
 					startMarkerTeam3.setLatLng(newLatlng);
 					startMarkerTeam3.addTo(map);
 					//e.waypoints[0].latLng
-                    ++kTeam3Displace3;
+                    ++jTeam2Displace3;
                     ++moveCounterTeam3;
 					console.log('kTeam3Displace3 =',kTeam3Displace3);
-					if ( 0 == finish3 ){
+					if ( 0 == finish ){
 						setTimeout(displaceMarker3Team3, Math.random()*1500);
 					}
 					else{
@@ -586,7 +588,7 @@
 					}
 				}
 				if( kTeam3Displace3 == (coordArr3.length-1) ){
-					finish3 = 1;
+					finish = 1;
 					startMarkerTeam3.setLatLng(L.latLng(latitude4, longitude4));
 					startMarkerTeam3.addTo(map);
 					console.log('Team2 coordArr3.length jTeam2Displace1', coordArr3.length);
