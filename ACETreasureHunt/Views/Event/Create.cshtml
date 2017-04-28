@@ -54,7 +54,7 @@
                                             @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
                                         </div>
                                         <div class="form-group">
-                                            @Html.EditorFor(model => model.StartDate, new { htmlAttributes = new { @class = "form-control", placeholder = "Start Date" } })
+                                            @Html.EditorFor(model => model.StartDate, new { htmlAttributes = new { @id = "mydate", @class = "form-control", placeholder = "Start Date" } })
                                             @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "text-danger" })
                                         </div>
                                         <div class="form-group">
@@ -98,6 +98,7 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+
     <script type="text/javascript">
         $(document).ready(function () {
 
@@ -194,8 +195,34 @@
 
         });
 
+        $(document).ready(function () {
+            var dateNewFormat, onlyDate, today = new Date();
+
+            dateNewFormat = today.getFullYear() + '-';
+            if (today.getMonth().length == 2) {
+
+                dateNewFormat += (today.getMonth() + 1);
+            }
+            else {
+                dateNewFormat += '0' + (today.getMonth() + 1);
+            }
+
+            onlyDate = today.getDate();
+            if (onlyDate.toString().length == 2) {
+
+                dateNewFormat += "-" + onlyDate;
+            }
+            else {
+                dateNewFormat += '-0' + onlyDate;
+            }
+
+            $('#mydate').val(dateNewFormat);
+        });
 
     </script>
+
 }
+
+
 
 @*'pk.eyJ1IjoiZ3VydXByYWJhIiwiYSI6ImNqMXZtMnAwYTAwMGEyd3BlZDN6b2UyYXQifQ.TLQvP6CeBZLbEWrtmu7fIw'*@

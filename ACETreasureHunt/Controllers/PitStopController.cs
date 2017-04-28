@@ -63,8 +63,8 @@ namespace ACETreasureHunt.Controllers
         public ActionResult Edit(PitStop acePitStop)
         {
             IEnumerable<Event> List = unitOfWork.Events.GetAll();
-            ViewBag.EventID = new SelectList(List, "Id", "Name");
             PitStop EventPitStop = unitOfWork.PitStops.Get(acePitStop.Id);
+            ViewBag.EventID = new SelectList(List, "Id", "Name", EventPitStop.EventID);
             return View(EventPitStop);
         }
 

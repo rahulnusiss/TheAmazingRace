@@ -18,6 +18,7 @@ namespace ACETreasureHunt.Models
 
         [DataType(DataType.Date)]
         [Display(Name = "Start Date")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime StartDate { get; set; }
 
         [Required]
