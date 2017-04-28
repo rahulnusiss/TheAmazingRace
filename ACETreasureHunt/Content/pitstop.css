@@ -4,9 +4,7 @@
     border-radius: 6px;
     height: 200px;
     max-width: 340px;
-    // orginal twitter width: 290px;
 }
-
 
 .ack {
     background-image: url("http://nozinblog.com/wp-content/uploads/2012/01/Cruise-Destination-Wedding460x300.jpg");
@@ -119,3 +117,4 @@ ul.twPc-Arrange {
 a {
     color: white;
 }
+

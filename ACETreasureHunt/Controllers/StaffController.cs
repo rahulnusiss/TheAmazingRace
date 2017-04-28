@@ -13,6 +13,7 @@ namespace ACETreasureHunt.Controllers
     {
         IUnitOfWork unitOfWork = new UnitOfWork(new ACEContext());
         // GET: Staff
+        [Authorize]
         public ActionResult Index()
         {
             IEnumerable<Staff> GameStaffs = unitOfWork.Staffs.GetAll();
@@ -21,6 +22,7 @@ namespace ACETreasureHunt.Controllers
 
 
         // GET: Staff/Create
+        [Authorize]
         public ActionResult Create()
         {
             IEnumerable<Event> List = unitOfWork.Events.GetAll();
@@ -30,6 +32,7 @@ namespace ACETreasureHunt.Controllers
         }
 
         // POST: Staff/Create
+        [Authorize]
         [HttpPost]
         public ActionResult Create(Staff staff)
         {
@@ -57,6 +60,7 @@ namespace ACETreasureHunt.Controllers
         }
 
         // GET: Staff/Edit/5
+        [Authorize]
         public ActionResult Edit(Staff aceStaff)
         {
             IEnumerable<Event> List = unitOfWork.Events.GetAll();
@@ -66,6 +70,7 @@ namespace ACETreasureHunt.Controllers
         }
 
         // POST: Staff/Edit/5
+        [Authorize]
         [HttpPost]
         public ActionResult Edit(int id,Staff aceStaff)
         {
