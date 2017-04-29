@@ -18,6 +18,7 @@ namespace ACETreasureHunt.Models
         public string Description { get; set; }
 
         [Required]
+        [Range(1,5)]
         public int PitStopNumber { get; set; }
 
         [Required]
