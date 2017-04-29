@@ -212,9 +212,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201704280707147_Initial.cs" />
-    <Compile Include="Migrations\201704280707147_Initial.Designer.cs">
-      <DependentUpon>201704280707147_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201704281643462_Initial.cs" />
+    <Compile Include="Migrations\201704281643462_Initial.Designer.cs">
+      <DependentUpon>201704281643462_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -234,6 +234,7 @@
     <Content Include="Content\editevent.css" />
     <Content Include="Content\eventindex.css" />
     <Content Include="Content\flipflop.css" />
+    <Content Include="Content\form.css" />
     <Content Include="Content\home.css" />
     <Content Include="Content\images\layers-2x.png" />
     <Content Include="Content\images\layers.png" />
@@ -345,8 +346,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201704280707147_Initial.resx">
-      <DependentUpon>201704280707147_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201704281643462_Initial.resx">
+      <DependentUpon>201704281643462_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

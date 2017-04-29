@@ -27,19 +27,18 @@ namespace ACETreasureHunt.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
-
             context.Events.AddOrUpdate(
-             p => p.Id,
-             new Event { Name = "BhaagMilkha", Address = "Take it or not", StartDate = new DateTime(2017, 2, 2), Id = 1, StartLatitude = 1.3046014, StartLongitude = 103.7701238 },
+              p => p.Id,
+              new Event { Name = "BhaagMilkha", Address = "Take it or not", StartDate = new DateTime(2017, 2, 2), Id = 1, StartLatitude = 1.3046014, StartLongitude = 103.7701238 },
              new Event { Name = "SherlockHolmes", Address = "Take it or not", StartDate = new DateTime(2017, 3, 3), Id = 2, StartLatitude = 1.3046014, StartLongitude = 103.8701238 },
              new Event { Name = "NUSTreasureHunt", Address = "Take it or not", StartDate = new DateTime(2017, 4, 5), Id = 3, StartLatitude = 1.2946014, StartLongitude = 103.7701238 }
-           );
+            );
 
             context.Staffs.AddOrUpdate(
             p => p.Id,
-            new Staff { Name = "Flash", EventID = 1 , Id = 1, Latitude = 1.3320, Longitude = 103.8991 },
-            new Staff { Name = "Hulk", EventID = 2 , Id = 2, Latitude = 1.3296, Longitude = 103.8980 },
-            new Staff { Name = "Hawk", EventID = 3 , Id = 3, Latitude = 1.3164, Longitude = 103.8828 },
+            new Staff { Name = "Flash", EventID = 1, Id = 1, Latitude = 1.3320, Longitude = 103.8991 },
+            new Staff { Name = "Hulk", EventID = 2, Id = 2, Latitude = 1.3296, Longitude = 103.8980 },
+            new Staff { Name = "Hawk", EventID = 3, Id = 3, Latitude = 1.3164, Longitude = 103.8828 },
             new Staff { Name = "Flash2", EventID = 3, Id = 4, Latitude = 1.3320, Longitude = 103.8991 },
             new Staff { Name = "Hulk2", EventID = 1, Id = 5, Latitude = 1.3296, Longitude = 103.8980 },
             new Staff { Name = "Hawk2", EventID = 2, Id = 6, Latitude = 1.3164, Longitude = 103.8828 },
@@ -73,7 +72,6 @@ namespace ACETreasureHunt.Migrations
               new PitStop { PitStopName = "Dhoby Ghaut ", PitStopNumber = 2, Latitude = 1.2988, Longitude = 103.8452, Description = "WAH", EventID = 3, Id = 8 },
               new PitStop { PitStopName = "Lavendar", PitStopNumber = 3, Latitude = 1.3075337, Longitude = 103.8609886, Description = "WAH", EventID = 3, Id = 9 }
               );
-
         }
     }
 }
