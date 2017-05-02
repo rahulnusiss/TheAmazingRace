@@ -73,12 +73,6 @@
             </div>
         </div>
 
-
-
-
-
-
-
         <div class="jumbotron">
             <div class="pricing-table pricing-three-column row">
                 <div class="plan col-sm-4 col-lg-4">
@@ -88,11 +82,17 @@
                     </div>
                     <ul>
                         @foreach (var team in ViewBag.MyList)
-                {
-                            <li class="plan-feature">@team.Name</li>
+                        {
+                            <li class="plan-feature">
+                                @Html.ActionLink((string)team.Name, "Details", "Team", new { Id = team.Id, Name = team.Name, Description = team.Description, EventID = team.EventID }, new { @class = "btn btn-link" })
+                                <a style="color: #428bca" href="@Url.Action("Edit", "Team", new { Id = team.Id, Name = team.Name, Description = team.Description, EventID = team.EventID })" class="btn btn-link">
+                                    <i class="glyphicon glyphicon-edit blue"></i>
+                                </a> <a style="color: #428bca" href="@Url.Action("Delete", "Team", new { Id = team.Id, Name = team.Name, Description = team.Description, EventID = team.EventID })" class="btn btn-link">
+                                    <i class="glyphicon glyphicon-trash red"></i>
+                                </a>
+                            </li>
                         }
-
-                        <li class="plan-feature"><a href="#" class="btn btn-primary btn-plan-select" onclick="location.href='@Url.Action("Index", "Team")'"><i class="icon-white icon-ok"></i>Manage</a></li>
+                        <li class="plan-feature"><a href="#" class="btn btn-primary btn-plan-select" onclick="location.href='@Url.Action("Create", "Team")'"><i class="icon-white icon-ok"></i>Create</a></li>
                     </ul>
                 </div>
 
@@ -118,10 +118,18 @@
                     </div>
                     <ul>
                         @foreach (var event3 in ViewBag.MyList3)
-                {
-                            <li class="plan-feature">@event3.PitStopName</li>
+                        {
+                            <li class="plan-feature">
+                                @Html.ActionLink((string)event3.PitStopName, "Details", "PitStop", new { Id = event3.Id, PitStopName = event3.PitStopName, Description = event3.Description, PitStopNumber = event3.PitStopNumber, Latitude = event3.Latitude, Longitude = event3.Longitude, EventID = event3.EventID }, new { @class = "btn btn-link" })
+                                <a style="color: #428bca" href="@Url.Action("Edit", "PitStop", new { Id = event3.Id, PitStopName = event3.PitStopName, Description = event3.Description, PitStopNumber = event3.PitStopNumber, Latitude = event3.Latitude, Longitude = event3.Longitude,  EventID = event3.EventID })" class="btn btn-link">
+                                    <i class="glyphicon glyphicon-edit blue"></i>
+                                </a>
+                                <a style="color: #428bca" href="@Url.Action("Delete", "PitStop", new { Id = event3.Id, PitStopName = event3.PitStopName, Description = event3.Description, PitStopNumber = event3.PitStopNumber, Latitude = event3.Latitude, Longitude = event3.Longitude,  EventID = event3.EventID  })" class="btn btn-link">
+                                    <i class="glyphicon glyphicon-trash red"></i>
+                                </a>
+                            </li>
                         }
-                        <li class="plan-feature"><a href="#" class="btn btn-primary btn-plan-select" onclick="location.href='@Url.Action("Index", "PitStop")'"><i class="icon-white icon-ok"></i>Manage</a></li>
+                        <li class="plan-feature"><a href="#" class="btn btn-primary btn-plan-select" onclick="location.href='@Url.Action("Create", "PitStop")'"><i class="icon-white icon-ok"></i>Create</a></li>
                     </ul>
                 </div>
             </div>

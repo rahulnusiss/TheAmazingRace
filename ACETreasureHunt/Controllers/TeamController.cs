@@ -24,6 +24,13 @@ namespace ACETreasureHunt.Controllers
             return View(GameTeams);
         }
 
+        // GET: Team/Details/5
+        public ActionResult Details(Team aceTeam)
+        {
+            Team EventTeam = unitOfWork.Teams.Get(aceTeam.Id);
+            return View(EventTeam);
+        }
+
         // GET: Team/Create
         [Authorize]
         public ActionResult Create()
@@ -43,7 +50,7 @@ namespace ACETreasureHunt.Controllers
             {
                 unitOfWork.Teams.Add(team);
                 unitOfWork.Complete();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","Event");
             }
             catch (Exception e)
             {
@@ -83,7 +90,7 @@ namespace ACETreasureHunt.Controllers
                 Team team = unitOfWork.Teams.Get(aceTeam.Id);
                 UpdateModel(team);
                 unitOfWork.Complete();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Event");
             }
             catch (Exception e)
             {
@@ -120,7 +127,7 @@ namespace ACETreasureHunt.Controllers
                 Team team = unitOfWork.Teams.Get(aceTeam.Id);
                 unitOfWork.Teams.Remove(team);
                 unitOfWork.Complete();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Event");
             }
             catch (Exception e)
             {

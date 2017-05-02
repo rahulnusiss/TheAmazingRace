@@ -50,7 +50,7 @@ namespace ACETreasureHunt.Controllers
             {
                     unitOfWork.PitStops.Add(pitstop);
                     unitOfWork.Complete();
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Index", "Event");
             }
             catch (Exception e)
             {
@@ -90,7 +90,7 @@ namespace ACETreasureHunt.Controllers
                 PitStop pitstop = unitOfWork.PitStops.Get(acePitStop.Id);
                 UpdateModel(pitstop);
                 unitOfWork.Complete();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Event");
             }
             catch (Exception e)
             {
@@ -127,7 +127,7 @@ namespace ACETreasureHunt.Controllers
                 PitStop pitstop = unitOfWork.PitStops.Get(acePitStop.Id);
                 unitOfWork.PitStops.Remove(pitstop);
                 unitOfWork.Complete();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Event");
             }
             catch (Exception e)
             {

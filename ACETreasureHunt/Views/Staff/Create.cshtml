@@ -63,19 +63,9 @@
 	    		</div>
     		</div>
     	</div>
-
-
-
-
-
-
 </div>
     </div>
-
-
-
-
-
+        
     <div class="col-xs-12 col-md-12 col-lg-6">
         <h4 class="white">Location</h4>
     <div id="map" data-mode="" style=" height: 300px; width: 100%;overflow:auto;">
@@ -89,7 +79,7 @@
 }
 
     <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to Event", "Edit", "Event", new { Id = Model.EventID }, new { @class = "btn btn-link" })
     </div>
     </div>
 
