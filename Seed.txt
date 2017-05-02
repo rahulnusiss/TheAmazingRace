@@ -5,6 +5,15 @@ protected override void Seed(ACETreasureHunt.DAL.ACEContext context)
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data. E.g.
             //
+
+            ACETreasureHunt.Models.ApplicationDbContext LoginContext = new ACETreasureHunt.Models.ApplicationDbContext();
+
+            var userStore = new UserStore<ApplicationUser>(LoginContext);
+            var userManager = new UserManager<ApplicationUser>(userStore);
+            var userToInsert = new ApplicationUser { UserName = "team05@ace.com", PhoneNumber = "0797697898" };
+            userManager.Create(userToInsert, "Qwerty@123");
+
+            
             context.Events.AddOrUpdate(
               p => p.Id,
               new Event { Name = "BhaagMilkha", Address = "Take it or not", StartDate = new DateTime(2017, 2, 2), Id = 1, StartLatitude = 1.3046014, StartLongitude = 103.7701238 },
@@ -67,3 +76,10 @@ protected override void Seed(ACETreasureHunt.DAL.ACEContext context)
         staff2= 1.3296, 103.8980
 
         staff3= 1.3164, 103.8828
+
+           var userStore = new UserStore<ApplicationUser>(context);
+            var userManager = new UserManager<ApplicationUser>(userStore);
+            var userToInsert = new ApplicationUser { UserName = "team05@ace.com", PhoneNumber = "0797697898" };
+            userManager.Create(userToInsert, "Qwerty@123"); 
+
+            Enable-Migrations -ContextTypeName ACETreasureHunt.Models.ApplicationDbContext
